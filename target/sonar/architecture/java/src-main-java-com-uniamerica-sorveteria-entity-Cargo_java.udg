@@ -1,0 +1,128 @@
+
+1.0ErikTontini_ApiSorveteriaJavaFrontend"1792763923613*java2.BÈ
+>
+9src/main/java/com/uniamerica/sorveteria/entity/Cargo.java2
+	
+type3
+	
+MAIN4
+
+package6
+%
+ com.uniamerica.sorveteria.entity7
++
+&com.uniamerica.sorveteria.entity.Cargo9
+
+
+enum10
+
+access11
+
+public12
+
+
+full-range13
+
+(3:1)-(8:2)14
+
+simple-name15
+
+Cargo16
+^
+Xcom.uniamerica.sorveteria.entity.Cargo#values()[Lcom/uniamerica/sorveteria/entity/Cargo;18
+
+method19
+
+values20
+p
+jcom.uniamerica.sorveteria.entity.Cargo#valueOf(Ljava/lang/String;)Lcom/uniamerica/sorveteria/entity/Cargo;22
+
+valueOf23
+4
+.com.uniamerica.sorveteria.entity.Cargo.GERENTE25
+
+field26
+
+(5:5)-(5:13)27
+
+GERENTE28
+8
+2com.uniamerica.sorveteria.entity.Cargo.FUNCIONARIO30
+
+(6:5)-(6:16)31
+
+FUNCIONARIO32J
+
+1
+12
+
+
+3
+4 Z
+
+5
+5768j’
+A
+21;
+212219 *
+1 (28:5B
+
+
+13
+14
+
+
+15
+23
+A
+17;
+171819 *
+1 (28:5B
+
+
+13
+14
+
+
+15
+20
+G
+8B
+8910 *
+1 (:5B$
+
+
+11
+12
+
+
+13
+14
+
+
+15
+16
+A
+24;
+242526 *
+1 (28:5B
+
+
+13
+27
+
+
+15
+28
+A
+29;
+293026 *
+1 (28:5B
+
+
+13
+31
+
+
+15
+32

@@ -1,0 +1,179 @@
+
+1.0ErikTontini_ApiSorveteriaJavaFrontend"1792763923633*java2.Bö
+L
+Gsrc/main/java/com/uniamerica/sorveteria/client/viacep/ViaCepClient.java2
+	
+type3
+	
+MAIN4
+
+package6
+,
+'com.uniamerica.sorveteria.client.viacep7
+9
+4com.uniamerica.sorveteria.client.viacep.ViaCepClient9
+
+	interface10
+
+access11
+
+public12
+
+
+full-range13
+
+(7:1)-(16:2)14
+
+simple-name15
+
+ViaCepClient16
+5
+/org.springframework.cloud.openfeign.FeignClient17
+
+ARG_name18
+
+viaCepClient19
+
+ARG_url20
+
+https://viacep.com.br21
+
+unknown23
+
+annotated by24
+
+
+uses25
+‘
+Šcom.uniamerica.sorveteria.client.viacep.ViaCepClient#buscarCep(Ljava/lang/String;)Lcom/uniamerica/sorveteria/client/viacep/ViaCepResponse;27
+
+method28
+
+(13:3)-(15:5)29
+
+	buscarCep30
+8
+2org.springframework.web.bind.annotation.GetMapping31
+
+	ARG_value32
+
+/ws/{cep}/json/33
+<
+6com.uniamerica.sorveteria.client.viacep.ViaCepResponse35
+
+returns36
+
+java.lang.String38
+
+	has param39
+
+is type41
+:
+4org.springframework.web.bind.annotation.PathVariable43J
+
+1
+12
+
+
+3
+4 Z
+
+5
+5768j´
+
+34
+343523
+
+42
+424323
+
+40
+403123
+i
+8d
+8910 *
+1 (:5B$
+
+
+11
+12
+
+
+13
+14
+
+
+15
+16R 
+
+17
+
+
+18
+19
+
+
+20
+21
+
+37
+373823
+
+22
+221723
+c
+26]
+262728 *
+1 (28:5B$
+
+
+11
+12
+
+
+13
+29
+
+
+15
+30R
+
+31
+
+
+32
+33r§
+
+82224*
+1 
+(
+
+82225*
+1 (
+
+263436*
+1 (
+
+263739*
+11 (7
+
+264024*
+1 (!
+
+264025*
+1 (
+
+263425*
+1 (
+
+263741*
+18 (;
+
+264224*
+1 (0
+
+264225*
+1 ()
+
+263725*
+11 (7

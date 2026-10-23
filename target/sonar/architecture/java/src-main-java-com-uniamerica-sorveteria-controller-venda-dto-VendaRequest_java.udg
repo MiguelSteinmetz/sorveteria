@@ -1,0 +1,174 @@
+
+1.0ErikTontini_ApiSorveteriaJavaFrontend"1792763923290*java2.B˜
+S
+Nsrc/main/java/com/uniamerica/sorveteria/controller/venda/dto/VendaRequest.java2
+	
+type3
+	
+MAIN4
+
+package6
+3
+.com.uniamerica.sorveteria.controller.venda.dto7
+@
+;com.uniamerica.sorveteria.controller.venda.dto.VendaRequest9
+
+record10
+
+access11
+
+public12
+
+
+full-range13
+
+(8:1)-(15:2)14
+
+simple-name15
+
+VendaRequest16
+G
+Acom.uniamerica.sorveteria.controller.venda.dto.VendaRequest.itens18
+
+field19
+
+	protected20
+
+(10:9)-(12:37)21
+
+itens22
+-
+'jakarta.validation.constraints.NotEmpty23
+
+ARG_message24
+-
+'A venda deve possuir pelo menos um item25
+
+jakarta.validation.Valid26
+
+java.util.List28
+
+unknown29
+
+is type30
+Y
+Scom.uniamerica.sorveteria.controller.venda.dto.VendaRequest#itens()Ljava/util/List;32
+
+method33
+
+
+references34
+
+annotated by36
+
+
+uses37
+E
+?com.uniamerica.sorveteria.controller.venda.dto.ItemVendaRequest40J
+
+1
+12
+
+
+3
+4 Z
+
+5
+5768jÇ
+
+27
+272829
+G
+8B
+8910 *
+1 (:5B$
+
+
+11
+12
+
+
+13
+14
+
+
+15
+16
+
+39
+394029
+
+35
+352329
+
+38
+382629
+i
+17c
+171819 *
+1  (%28:5B$
+
+
+11
+20
+
+
+13
+21
+
+
+15
+22R
+
+23
+
+
+24
+25
+
+26
+A
+31;
+313233 *
+1  (%28:5B
+
+
+13
+21
+
+
+15
+22ró
+
+172730*
+1	 (
+
+311734*
+1  (%
+
+173536*
+1
+	 
+(G
+
+173537*
+1
+
+ 
+(
+
+173836*
+1	 (
+
+173837*
+1
+ (
+
+172737*
+1	 (
+
+173937*
+1 (
+
+172737*
+1  (%

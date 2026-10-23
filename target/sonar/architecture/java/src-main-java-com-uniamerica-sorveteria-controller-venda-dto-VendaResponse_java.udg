@@ -1,0 +1,409 @@
+
+1.0ErikTontini_ApiSorveteriaJavaFrontend"1792763923753*java2.B”
+T
+Osrc/main/java/com/uniamerica/sorveteria/controller/venda/dto/VendaResponse.java2
+	
+type3
+	
+MAIN4
+
+package6
+3
+.com.uniamerica.sorveteria.controller.venda.dto7
+A
+<com.uniamerica.sorveteria.controller.venda.dto.VendaResponse9
+
+record10
+
+access11
+
+public12
+
+
+full-range13
+
+(9:1)-(35:2)14
+
+simple-name15
+
+VendaResponse16
+E
+?com.uniamerica.sorveteria.controller.venda.dto.VendaResponse.id18
+
+field19
+
+	protected20
+
+(11:9)-(11:17)21
+
+id22
+
+java.lang.Long24
+
+unknown25
+
+is type26
+W
+Qcom.uniamerica.sorveteria.controller.venda.dto.VendaResponse#id()Ljava/lang/Long;28
+
+method29
+
+
+references30
+
+
+uses31
+H
+Bcom.uniamerica.sorveteria.controller.venda.dto.VendaResponse.itens33
+
+(12:9)-(12:39)34
+
+itens35
+
+java.util.List37
+Z
+Tcom.uniamerica.sorveteria.controller.venda.dto.VendaResponse#itens()Ljava/util/List;39
+F
+@com.uniamerica.sorveteria.controller.venda.dto.ItemVendaResponse41
+M
+Gcom.uniamerica.sorveteria.controller.venda.dto.VendaResponse.valorTotal43
+
+(13:9)-(13:27)44
+
+
+valorTotal45
+
+java.lang.Double47
+a
+[com.uniamerica.sorveteria.controller.venda.dto.VendaResponse#valorTotal()Ljava/lang/Double;49
+K
+Ecom.uniamerica.sorveteria.controller.venda.dto.VendaResponse.dataHora51
+
+(14:9)-(14:32)52
+
+dataHora53
+
+java.time.LocalDateTime55
+f
+`com.uniamerica.sorveteria.controller.venda.dto.VendaResponse#dataHora()Ljava/time/LocalDateTime;57
+I
+Ccom.uniamerica.sorveteria.controller.venda.dto.VendaResponse.status59
+
+(15:9)-(15:27)60
+
+status61
+2
+,com.uniamerica.sorveteria.entity.StatusVenda63
+y
+scom.uniamerica.sorveteria.controller.venda.dto.VendaResponse#status()Lcom/uniamerica/sorveteria/entity/StatusVenda;65
+¶
+¯com.uniamerica.sorveteria.controller.venda.dto.VendaResponse#fromEntity(Lcom/uniamerica/sorveteria/entity/Venda;)Lcom/uniamerica/sorveteria/controller/venda/dto/VendaResponse;67
+
+(19:5)-(34:6)68
+
+
+fromEntity69
+
+returns70
+,
+&com.uniamerica.sorveteria.entity.Venda72
+
+	has param73
+
+calls74J
+
+1
+12
+
+
+3
+4 Z
+
+5
+5768jþ
+M
+42G
+424319 *
+1 (28:5B$
+
+
+11
+20
+
+
+13
+44
+
+
+15
+45
+M
+66G
+666729 *
+1! (+28:5B$
+
+
+11
+12
+
+
+13
+68
+
+
+15
+69
+
+40
+404125
+G
+8B
+8910 *
+1	 	(:5B$
+
+
+11
+12
+
+
+13
+14
+
+
+15
+16
+
+46
+464725
+M
+32G
+323319 *
+1! (&28:5B$
+
+
+11
+20
+
+
+13
+34
+
+
+15
+35
+
+54
+545525
+A
+48;
+484929 *
+1 (28:5B
+
+
+13
+44
+
+
+15
+45
+A
+64;
+646529 *
+1 (28:5B
+
+
+13
+60
+
+
+15
+61
+
+36
+363725
+M
+50G
+505119 *
+1 (28:5B$
+
+
+11
+20
+
+
+13
+52
+
+
+15
+53
+
+71
+717225
+
+23
+232425
+A
+38;
+383929 *
+1! (&28:5B
+
+
+13
+34
+
+
+15
+35
+A
+56;
+565729 *
+1 (28:5B
+
+
+13
+52
+
+
+15
+53
+A
+27;
+272829 *
+1 (28:5B
+
+
+13
+21
+
+
+15
+22
+M
+58G
+585919 *
+1 (28:5B$
+
+
+11
+20
+
+
+13
+60
+
+
+15
+61
+
+62
+626325
+M
+17G
+171819 *
+1 (28:5B$
+
+
+11
+20
+
+
+13
+21
+
+
+15
+22rÂ
+
+172326*
+1	 (
+
+271730*
+1 (
+
+172331*
+1	 (
+
+172331*
+1 (
+
+323626*
+1	 ( 
+
+383230*
+1! (&
+
+323631*
+1	 (
+
+324031*
+1 (
+
+323631*
+1! (&
+
+424626*
+1	 (
+
+484230*
+1 (
+
+424631*
+1	 (
+
+424631*
+1 (
+
+505426*
+1	 (
+
+565030*
+1 (
+
+505431*
+1	 (
+
+505431*
+1 (
+
+586226*
+1	 (
+
+645830*
+1 (
+
+586231*
+1	 (
+
+586231*
+1 (
+
+66870*
+1 ( 
+
+667173*
+1, (1
+
+66831*
+1 ( 
+
+667126*
+12 (7
+
+667131*
+1, (1
+
+663626*
+1! (&
+
+663631*
+1	 (
+
+664031*
+1 (
+
+664031*
+1 (/
+
+66874*
+1 (!

@@ -1,0 +1,236 @@
+
+1.0ErikTontini_ApiSorveteriaJavaFrontend"1792763924189*java2.B¡
+
+N
+Isrc/main/java/com/uniamerica/sorveteria/repository/ProdutoRepository.java2
+	
+type3
+	
+MAIN4
+
+package6
+)
+$com.uniamerica.sorveteria.repository7
+;
+6com.uniamerica.sorveteria.repository.ProdutoRepository9
+
+	interface10
+
+access11
+
+public12
+
+
+full-range13
+
+(9:1)-(16:2)14
+
+simple-name15
+
+ProdutoRepository16
+:
+4org.springframework.data.repository.NoRepositoryBean17
+,
+&org.springframework.stereotype.Indexed18
+;
+5org.springframework.data.jpa.repository.JpaRepository20
+
+unknown21
+
+
+implements22
+
+
+uses23
+.
+(com.uniamerica.sorveteria.entity.Produto25
+
+java.lang.Long27
+‹
+„com.uniamerica.sorveteria.repository.ProdutoRepository#findByCategoria(Lcom/uniamerica/sorveteria/entity/Categoria;)Ljava/util/List;29
+
+method30
+
+(11:5)-(11:56)31
+
+findByCategoria32
+
+java.util.List34
+
+returns35
+0
+*com.uniamerica.sorveteria.entity.Categoria37
+
+	has param38
+
+is type39
+
+ycom.uniamerica.sorveteria.repository.ProdutoRepository#findByNomeContainingIgnoreCase(Ljava/lang/String;)Ljava/util/List;41
+
+(13:5)-(13:63)42
+$
+findByNomeContainingIgnoreCase43
+
+java.lang.String45
+c
+]com.uniamerica.sorveteria.repository.ProdutoRepository#findByDisponivelTrue()Ljava/util/List;47
+
+(15:5)-(15:42)48
+
+findByDisponivelTrue49J
+
+1
+12
+
+
+3
+4 Z
+
+5
+5768j¼
+
+33
+333421
+
+24
+242521
+
+26
+262721
+M
+28G
+282930 *
+1 ("28:5B$
+
+
+11
+12
+
+
+13
+31
+
+
+15
+32
+M
+40G
+404130 *
+1 (128:5B$
+
+
+11
+12
+
+
+13
+42
+
+
+15
+43
+
+36
+363721
+
+44
+444521
+M
+46G
+464730 *
+1 ('28:5B$
+
+
+11
+12
+
+
+13
+48
+
+
+15
+49
+U
+8P
+8910 *
+1	 	(#:5B$
+
+
+11
+12
+
+
+13
+14
+
+
+15
+16R
+
+17
+
+18
+
+19
+192021rý
+
+81922*
+1	, 	(H
+
+81923*
+1	, 	(9
+
+82423*
+1	: 	(A
+
+82623*
+1	C 	(G
+
+283335*
+1 (
+
+283638*
+1# (,
+
+283323*
+1 (	
+
+282423*
+1
+ (
+
+283639*
+1- (6
+
+283623*
+1# (,
+
+403335*
+1 (
+
+404438*
+12 (8
+
+403323*
+1 (	
+
+402423*
+1
+ (
+
+404439*
+19 (=
+
+404423*
+12 (8
+
+463335*
+1 (
+
+463323*
+1 (	
+
+462423*
+1
+ (

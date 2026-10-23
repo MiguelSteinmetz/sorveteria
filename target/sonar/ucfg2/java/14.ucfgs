@@ -1,0 +1,98 @@
+¯
+πcom.uniamerica.sorveteria.controller.usuario.dto.UsuarioResponse#fromEntity(Lcom/uniamerica/sorveteria/entity/Usuario;)Lcom/uniamerica/sorveteria/controller/usuario/dto/UsuarioResponse;]
+Ssrc\main\java\com\uniamerica\sorveteria\controller\usuario\dto\UsuarioResponse.java" (,"1*Œ
+1 (®
+•
+ (
+%0"@com.uniamerica.sorveteria.entity.Usuario#getId()Ljava/lang/Long;*Q
+
+__unknown_file (5
+3
+usuario(com.uniamerica.sorveteria.entity.Usuario¨
+©
+ (!
+%1"Dcom.uniamerica.sorveteria.entity.Usuario#getNome()Ljava/lang/String;*Q
+
+__unknown_file (5
+3
+usuario(com.uniamerica.sorveteria.entity.Usuario≠
+™
+ ("
+%2"Ecom.uniamerica.sorveteria.entity.Usuario#getLogin()Ljava/lang/String;*Q
+
+__unknown_file (5
+3
+usuario(com.uniamerica.sorveteria.entity.Usuario√
+¿
+ ("
+%3"[com.uniamerica.sorveteria.entity.Usuario#getCargo()Lcom/uniamerica/sorveteria/entity/Cargo;*Q
+
+__unknown_file (5
+3
+usuario(com.uniamerica.sorveteria.entity.UsuarioÆ
+´
+ ("
+%4"Fcom.uniamerica.sorveteria.entity.Usuario#getAtivo()Ljava/lang/Boolean;*Q
+
+__unknown_file (5
+3
+usuario(com.uniamerica.sorveteria.entity.Usuario´
+®
+ ( 
+%5"Ccom.uniamerica.sorveteria.entity.Usuario#getCep()Ljava/lang/String;*Q
+
+__unknown_file (5
+3
+usuario(com.uniamerica.sorveteria.entity.Usuarioóî
+ ("F
+%6@com.uniamerica.sorveteria.controller.usuario.dto.UsuarioResponse"@com.uniamerica.sorveteria.controller.usuario.dto.UsuarioResponseü
+ú
+ (	
+%7"Àcom.uniamerica.sorveteria.controller.usuario.dto.UsuarioResponse#<init>(Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Lcom/uniamerica/sorveteria/entity/Cargo;Ljava/lang/Boolean;Ljava/lang/String;)V*d
+
+__unknown_file (H
+F
+%6@com.uniamerica.sorveteria.controller.usuario.dto.UsuarioResponse*"
+
+__unknown_file (
+
+%0*"
+
+__unknown_file (
+
+%1*"
+
+__unknown_file (
+
+%2*"
+
+__unknown_file (
+
+%3*"
+
+__unknown_file (
+
+%4*"
+
+__unknown_file (
+
+%5"T
+ (
+H
+F
+%6@com.uniamerica.sorveteria.controller.usuario.dto.UsuarioResponse:?
+- (<3
+usuario(com.uniamerica.sorveteria.entity.UsuarioBD"B
+@com.uniamerica.sorveteria.controller.usuario.dto.UsuarioResponseHÀ
+Jcom.uniamerica.sorveteria.controller.usuario.dto.UsuarioResponse#<init>()V]
+Ssrc\main\java\com\uniamerica\sorveteria\controller\usuario\dto\UsuarioResponse.java ("startingBlock*»
+startingBlock (è
+å
+ (
+%0"java.lang.Record#<init>()V*`
+
+__unknown_file (DB
+@com.uniamerica.sorveteria.controller.usuario.dto.UsuarioResponse"
+ (
+implicit returnBDB
+@com.uniamerica.sorveteria.controller.usuario.dto.UsuarioResponse
