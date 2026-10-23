@@ -1,184 +1,0 @@
-
-1.0ErikTontini_ApiSorveteriaJavaFrontend"1792763923592*java2.B¤
-B
-=src/main/java/com/uniamerica/sorveteria/entity/Categoria.java2
-	
-type3
-	
-MAIN4
-
-package6
-%
- com.uniamerica.sorveteria.entity7
-/
-*com.uniamerica.sorveteria.entity.Categoria9
-
-
-enum10
-
-access11
-
-public12
-
-
-full-range13
-
-(3:1)-(9:2)14
-
-simple-name15
-
-	Categoria16
-f
-`com.uniamerica.sorveteria.entity.Categoria#values()[Lcom/uniamerica/sorveteria/entity/Categoria;18
-
-method19
-
-values20
-x
-rcom.uniamerica.sorveteria.entity.Categoria#valueOf(Ljava/lang/String;)Lcom/uniamerica/sorveteria/entity/Categoria;22
-
-valueOf23
-8
-2com.uniamerica.sorveteria.entity.Categoria.SORVETE25
-
-field26
-
-(4:5)-(4:13)27
-
-SORVETE28
-:
-4com.uniamerica.sorveteria.entity.Categoria.CASQUINHA30
-
-(5:5)-(5:15)31
-
-	CASQUINHA32
-5
-/com.uniamerica.sorveteria.entity.Categoria.ACAI34
-
-(6:5)-(6:10)35
-
-
-ACAI36
-;
-5com.uniamerica.sorveteria.entity.Categoria.MILK_SHAKE38
-
-(7:5)-(7:16)39
-
-
-MILK_SHAKE40
-:
-4com.uniamerica.sorveteria.entity.Categoria.ADICIONAL42
-
-(8:5)-(8:14)43
-
-	ADICIONAL44J
-
-1
-12
-
-
-3
-4 Z
-
-5
-5768jž
-A
-37;
-373826 *
-1 (28:5B
-
-
-13
-39
-
-
-15
-40
-A
-21;
-212219 *
-1 (28:5B
-
-
-13
-14
-
-
-15
-23
-A
-41;
-414226 *
-1 (28:5B
-
-
-13
-43
-
-
-15
-44
-G
-8B
-8910 *
-1 (:5B$
-
-
-11
-12
-
-
-13
-14
-
-
-15
-16
-A
-24;
-242526 *
-1 (28:5B
-
-
-13
-27
-
-
-15
-28
-A
-29;
-293026 *
-1 (28:5B
-
-
-13
-31
-
-
-15
-32
-A
-33;
-333426 *
-1 (	28:5B
-
-
-13
-35
-
-
-15
-36
-A
-17;
-171819 *
-1 (28:5B
-
-
-13
-14
-
-
-15
-20

@@ -1,168 +1,0 @@
-
-1.0ErikTontini_ApiSorveteriaJavaFrontend"1792763924350*java2.BÀ
-=
-8src/main/java/com/uniamerica/sorveteria/Application.java2
-	
-type3
-	
-MAIN4
-
-package6
-
-com.uniamerica.sorveteria7
-*
-%com.uniamerica.sorveteria.Application9
-
-class10
-
-access11
-
-public12
-
-
-full-range13
-
-(7:1)-(14:2)14
-
-simple-name15
-
-Application16
-B
-<org.springframework.boot.autoconfigure.SpringBootApplication17
-<
-6org.springframework.cloud.openfeign.EnableFeignClients18
-
-unknown20
-
-annotated by21
-
-
-uses22
-F
-@com.uniamerica.sorveteria.Application#main([Ljava/lang/String;)V25
-
-method26
-
-(11:3)-(13:4)27
-
-
-main28
-
-java.lang.String30
-
-	has param31
-
-is type32
-@
-:org.springframework.context.ConfigurableApplicationContext34
-
-returns35
-0
-*org.springframework.boot.SpringApplication37
-
-
-references38
-—
-org.springframework.boot.SpringApplication#run(Ljava/lang/Class;[Ljava/lang/String;)Lorg/springframework/context/ConfigurableApplicationContext;40
-
-calls41J
-
-1
-12
-
-
-3
-4 Z
-
-5
-5768jž
-
-39
-394026
-
-23
-231820
-
-36
-363720
-
-19
-191720
-
-33
-333420
-U
-8P
-8910 *
-1	 	(:5B$
-
-
-11
-12
-
-
-13
-14
-
-
-15
-16R
-
-17
-
-18
-M
-24G
-242526 *
-1 (28:5B$
-
-
-11
-12
-
-
-13
-27
-
-
-15
-28
-
-29
-293020r¿
-
-81921*
-1 (
-
-81922*
-1 (
-
-82321*
-1 (
-
-82322*
-1 (
-
-242931*
-1 (#
-
-242932*
-1$ ((
-
-242922*
-1 (!
-
-243335*
-1 (
-
-243638*
-1 (
-
-243941*
-1 (
-
-243622*
-1 (
-
-24822*
-1 (&

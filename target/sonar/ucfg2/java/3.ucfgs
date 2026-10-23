@@ -1,203 +1,0 @@
-µ
-Dcom.uniamerica.sorveteria.entity.Produto#getNome()Ljava/lang/String;
-__unknown_file ("1*ü
-1 (¨
-©
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-%0java.lang.String"__id*B
- (6*4*
-(com.uniamerica.sorveteria.entity.Produto"
-nome"a
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-
-%0java.lang.StringB,*
-(com.uniamerica.sorveteria.entity.ProdutoH∑
-Ecom.uniamerica.sorveteria.entity.Produto#getPreco()Ljava/lang/Double;
-__unknown_file ("1*†
-1 (≠
-™
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-%0java.lang.Double"__id*C
- (7*5*
-(com.uniamerica.sorveteria.entity.Produto"
-preco"a
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-
-%0java.lang.DoubleB,*
-(com.uniamerica.sorveteria.entity.ProdutoHç
-ccom.uniamerica.sorveteria.entity.Produto#getCategoria()Lcom/uniamerica/sorveteria/entity/Categoria;
-__unknown_file ("1*ÿ
-1 (À
-»
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java ( 0
-%0*com.uniamerica.sorveteria.entity.Categoria"__id*G
- (;*9*
-(com.uniamerica.sorveteria.entity.Produto"
-	categoria"{
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java ( 2
-0
-%0*com.uniamerica.sorveteria.entity.CategoriaB,*
-(com.uniamerica.sorveteria.entity.ProdutoHƒ
-Kcom.uniamerica.sorveteria.entity.Produto#getDisponivel()Ljava/lang/Boolean;
-__unknown_file ("1*ß
-1 (≥
-∞
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-%0java.lang.Boolean"__id*H
- (<*:*
-(com.uniamerica.sorveteria.entity.Produto"
-
-disponivel"b
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-
-%0java.lang.BooleanB,*
-(com.uniamerica.sorveteria.entity.ProdutoHæ
-Hcom.uniamerica.sorveteria.entity.Produto#getEstoque()Ljava/lang/Integer;
-__unknown_file ("1*§
-1 (∞
-≠
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-%0java.lang.Integer"__id*E
- (9*7*
-(com.uniamerica.sorveteria.entity.Produto"	
-estoque"b
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-
-%0java.lang.IntegerB,*
-(com.uniamerica.sorveteria.entity.ProdutoH´
-@com.uniamerica.sorveteria.entity.Produto#getId()Ljava/lang/Long;
-__unknown_file ("1*ô
-1 (®
-•
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-%0java.lang.Long"__id*@
- (4*2*
-(com.uniamerica.sorveteria.entity.Produto"
-id"_
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-
-%0java.lang.LongB,*
-(com.uniamerica.sorveteria.entity.ProdutoH•
-Icom.uniamerica.sorveteria.entity.Produto#setEstoque(Ljava/lang/Integer;)V
-__unknown_file ("1*£
-1 (µ
-≤
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (7*
-(com.uniamerica.sorveteria.entity.Produto"	
-estoque"__id**
- (
-
-estoquejava.lang.Integer"\
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-implicit return:e
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-estoquejava.lang.IntegerB,*
-(com.uniamerica.sorveteria.entity.ProdutoHà
-Acom.uniamerica.sorveteria.entity.Produto#setId(Ljava/lang/Long;)V
-__unknown_file ("1*ñ
-1 (®
-•
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (2*
-(com.uniamerica.sorveteria.entity.Produto"
-id"__id*"
- (
-
-idjava.lang.Long"\
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-implicit return:]
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-idjava.lang.LongB,*
-(com.uniamerica.sorveteria.entity.ProdutoH˘
-dcom.uniamerica.sorveteria.entity.Produto#setCategoria(Lcom/uniamerica/sorveteria/entity/Categoria;)V
-__unknown_file ("1*¿
-1 (“
-œ
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java ( 9*
-(com.uniamerica.sorveteria.entity.Produto"
-	categoria"__id*E
- (9
-7
-	categoria*com.uniamerica.sorveteria.entity.Categoria"\
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java ( 
-implicit return:Ä
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java ( 7
-	categoria*com.uniamerica.sorveteria.entity.CategoriaB,*
-(com.uniamerica.sorveteria.entity.ProdutoH±
-Lcom.uniamerica.sorveteria.entity.Produto#setDisponivel(Ljava/lang/Boolean;)V
-__unknown_file ("1*©
-1 (ª
-∏
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (:*
-(com.uniamerica.sorveteria.entity.Produto"
-
-disponivel"__id*-
- (!
-
-
-disponiveljava.lang.Boolean"\
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-implicit return:h
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-
-disponiveljava.lang.BooleanB,*
-(com.uniamerica.sorveteria.entity.ProdutoHö
-Fcom.uniamerica.sorveteria.entity.Produto#setPreco(Ljava/lang/Double;)V
-__unknown_file ("1*û
-1 (∞
-≠
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (5*
-(com.uniamerica.sorveteria.entity.Produto"
-preco"__id*'
- (
-
-precojava.lang.Double"\
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-implicit return:b
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-precojava.lang.DoubleB,*
-(com.uniamerica.sorveteria.entity.ProdutoHñ
-Ecom.uniamerica.sorveteria.entity.Produto#setNome(Ljava/lang/String;)V
-__unknown_file ("1*ú
-1 (Æ
-´
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (4*
-(com.uniamerica.sorveteria.entity.Produto"
-nome"__id*&
- (
-
-nomejava.lang.String"\
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-implicit return:a
-E
-;src\main\java\com\uniamerica\sorveteria\entity\Produto.java (
-nomejava.lang.StringB,*
-(com.uniamerica.sorveteria.entity.ProdutoH

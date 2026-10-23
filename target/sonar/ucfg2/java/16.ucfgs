@@ -1,208 +1,0 @@
-õ
-9com.uniamerica.sorveteria.entity.Venda#%field_initializerC
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java ("1*È
-1
-__unknown_file (<:
-( (3
-%0java.util.ArrayList"java.util.ArrayListj
-h
-$ (5
-%1"java.util.ArrayList#<init>()V*7
-
-__unknown_file (
-
-%0java.util.ArrayListÄ
-~
- (63(
-&com.uniamerica.sorveteria.entity.Venda"
-itens"__id*7
-
-__unknown_file (
-
-%0java.util.ArrayList"
-  (
-implicit returnB*(
-&com.uniamerica.sorveteria.entity.Vendaß
-Acom.uniamerica.sorveteria.entity.Venda#getItens()Ljava/util/List;
-__unknown_file ("1*ñ
-1 (ß
-§
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (6
-%0java.util.List"__id*A
- (5*3(
-&com.uniamerica.sorveteria.entity.Venda"
-itens"]
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (6
-
-%0java.util.ListB*(
-&com.uniamerica.sorveteria.entity.VendaHÉ
-`com.uniamerica.sorveteria.entity.Venda#getStatus()Lcom/uniamerica/sorveteria/entity/StatusVenda;
-__unknown_file ("1*”
-1 (∆
-√
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (2
-%0,com.uniamerica.sorveteria.entity.StatusVenda"__id*B
- (6*4(
-&com.uniamerica.sorveteria.entity.Venda"
-status"{
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (4
-2
-%0,com.uniamerica.sorveteria.entity.StatusVendaB*(
-&com.uniamerica.sorveteria.entity.VendaH°
->com.uniamerica.sorveteria.entity.Venda#getId()Ljava/lang/Long;
-__unknown_file ("1*ì
-1 (§
-°
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (
-%0java.lang.Long"__id*>
- (2*0(
-&com.uniamerica.sorveteria.entity.Venda"
-id"]
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (
-
-%0java.lang.LongB*(
-&com.uniamerica.sorveteria.entity.VendaH»
-Mcom.uniamerica.sorveteria.entity.Venda#getDataHora()Ljava/time/LocalDateTime;
-__unknown_file ("1*´
-1 (≥
-∞
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (#
-%0java.time.LocalDateTime"__id*D
- (8*6(
-&com.uniamerica.sorveteria.entity.Venda"
-
-dataHora"f
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (#
-
-%0java.time.LocalDateTimeB*(
-&com.uniamerica.sorveteria.entity.VendaH∑
-Hcom.uniamerica.sorveteria.entity.Venda#getValorTotal()Ljava/lang/Double;
-__unknown_file ("1*ü
-1 (Æ
-´
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (
-%0java.lang.Double"__id*F
- (:*8(
-&com.uniamerica.sorveteria.entity.Venda"
-
-valorTotal"_
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (
-
-%0java.lang.DoubleB*(
-&com.uniamerica.sorveteria.entity.VendaHà
-Bcom.uniamerica.sorveteria.entity.Venda#setItens(Ljava/util/List;)V
-__unknown_file ("1*ñ
-1 (™
-ß
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (63(
-&com.uniamerica.sorveteria.entity.Venda"
-itens"__id*%
- (
-
-itensjava.util.List"Z
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (6
-implicit return:^
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (6
-itensjava.util.ListB*(
-&com.uniamerica.sorveteria.entity.VendaH¢
-Icom.uniamerica.sorveteria.entity.Venda#setValorTotal(Ljava/lang/Double;)V
-__unknown_file ("1*¢
-1 (∂
-≥
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (8(
-&com.uniamerica.sorveteria.entity.Venda"
-
-valorTotal"__id*,
- ( 
-
-
-valorTotaljava.lang.Double"Z
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (
-implicit return:e
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (
-
-valorTotaljava.lang.DoubleB*(
-&com.uniamerica.sorveteria.entity.VendaHØ
-Ncom.uniamerica.sorveteria.entity.Venda#setDataHora(Ljava/time/LocalDateTime;)V
-__unknown_file ("1*•
-1 (π
-∂
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (#6(
-&com.uniamerica.sorveteria.entity.Venda"
-
-dataHora"__id*1
- (%
-#
-dataHorajava.time.LocalDateTime"Z
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (#
-implicit return:j
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (##
-dataHorajava.time.LocalDateTimeB*(
-&com.uniamerica.sorveteria.entity.VendaH¸
-?com.uniamerica.sorveteria.entity.Venda#setId(Ljava/lang/Long;)V
-__unknown_file ("1*ê
-1 (§
-°
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (0(
-&com.uniamerica.sorveteria.entity.Venda"
-id"__id*"
- (
-
-idjava.lang.Long"Z
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (
-implicit return:[
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (
-idjava.lang.LongB*(
-&com.uniamerica.sorveteria.entity.VendaHÊ
-acom.uniamerica.sorveteria.entity.Venda#setStatus(Lcom/uniamerica/sorveteria/entity/StatusVenda;)V
-__unknown_file ("1*∂
-1 ( 
-«
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (4(
-&com.uniamerica.sorveteria.entity.Venda"
-status"__id*D
- (8
-6
-status,com.uniamerica.sorveteria.entity.StatusVenda"Z
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (
-implicit return:}
-C
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java (6
-status,com.uniamerica.sorveteria.entity.StatusVendaB*(
-&com.uniamerica.sorveteria.entity.VendaHÇ
-0com.uniamerica.sorveteria.entity.Venda#<init>()VC
-9src\main\java\com\uniamerica\sorveteria\entity\Venda.java ("startingBlock*Õ
-startingBlock (î
-ë
- (
-%0"9com.uniamerica.sorveteria.entity.Venda#%field_initializer*F
-
-__unknown_file (*(
-&com.uniamerica.sorveteria.entity.Venda"
- (
-implicit returnB*(
-&com.uniamerica.sorveteria.entity.Venda

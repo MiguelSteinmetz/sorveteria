@@ -1,616 +1,0 @@
-
-1.0ErikTontini_ApiSorveteriaJavaFrontend"1792763924019*java2.Bà
-H
-Csrc/main/java/com/uniamerica/sorveteria/service/UsuarioService.java2
-	
-type3
-	
-MAIN4
-
-package6
-&
-!com.uniamerica.sorveteria.service7
-5
-0com.uniamerica.sorveteria.service.UsuarioService9
-
-class10
-
-access11
-
-public12
-
-
-full-range13
-
-(13:1)-(59:2)14
-
-simple-name15
-
-UsuarioService16
-
-lombok.extern.slf4j.Slf4j17
-,
-&org.springframework.stereotype.Service18
-$
-lombok.RequiredArgsConstructor19
-
-unknown21
-
-annotated by22
-
-
-uses23
-H
-Bcom.uniamerica.sorveteria.service.UsuarioService.usuarioRepository27
-
-field28
-
-private29
-
-(18:5)-(18:55)30
-
-usuarioRepository31
-<
-6com.uniamerica.sorveteria.repository.UsuarioRepository33
-
-is type34
-C
-=com.uniamerica.sorveteria.service.UsuarioService.viaCepClient36
-
-(19:4)-(19:44)37
-
-viaCepClient38
-:
-4com.uniamerica.sorveteria.client.viacep.ViaCepClient40
-®
-§com.uniamerica.sorveteria.service.UsuarioService#cadastrar(Lcom/uniamerica/sorveteria/controller/usuario/dto/UsuarioRequest;)Lcom/uniamerica/sorveteria/entity/Usuario;42
-
-method43
-
-(21:5)-(40:6)44
-
-	cadastrar45
-.
-(com.uniamerica.sorveteria.entity.Usuario47
-
-returns48
-E
-?com.uniamerica.sorveteria.controller.usuario.dto.UsuarioRequest50
-
-	has param51
-
-
-references52
-_
-Ycom.uniamerica.sorveteria.repository.UsuarioRepository#existsByLogin(Ljava/lang/String;)Z54
-
-calls55
-
-java.lang.String57
-_
-Ycom.uniamerica.sorveteria.controller.usuario.dto.UsuarioRequest#login()Ljava/lang/String;59
-<
-6org.springframework.web.server.ResponseStatusException61
-
-	exception62
-
-ARG_063
-
-CONFLICT64
-
-ARG_165
-*
-$JÃ¡ existe um usuario com esse login66
-)
-#org.springframework.http.HttpStatus68
-2
-,org.springframework.http.HttpStatus.CONFLICT70
-^
-Xcom.uniamerica.sorveteria.controller.usuario.dto.UsuarioRequest#nome()Ljava/lang/String;72
-_
-Ycom.uniamerica.sorveteria.controller.usuario.dto.UsuarioRequest#senha()Ljava/lang/String;74
-,
-&com.uniamerica.sorveteria.entity.Cargo76
-u
-ocom.uniamerica.sorveteria.controller.usuario.dto.UsuarioRequest#cargo()Lcom/uniamerica/sorveteria/entity/Cargo;78
-]
-Wcom.uniamerica.sorveteria.controller.usuario.dto.UsuarioRequest#cep()Ljava/lang/String;80
-8
-2org.springframework.data.repository.CrudRepository82
-c
-]org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;84
-
-‰com.uniamerica.sorveteria.service.UsuarioService#buscarEndereco(Ljava/lang/Long;)Lcom/uniamerica/sorveteria/client/viacep/ViaCepResponse;86
-
-(42:3)-(58:4)87
-
-buscarEndereco88
-<
-6com.uniamerica.sorveteria.client.viacep.ViaCepResponse90
-
-java.lang.Long92
-
-java.util.Optional94
-U
-Ojava.util.Optional#orElseThrow(Ljava/util/function/Supplier;)Ljava/lang/Object;96
-
-RECV_097
-
-findById98
-j
-corg.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;100
-
-	NOT_FOUND101
-)
-"Usuario nÃ£o encontrado com id ï¿¿102
-4
--org.springframework.http.HttpStatus.NOT_FOUND104
-
-BAD_REQUEST105
-)
-"Usuario nÃ£o possui CEP cadastrado106
-6
-/org.springframework.http.HttpStatus.BAD_REQUEST108
-’
-Šcom.uniamerica.sorveteria.client.viacep.ViaCepClient#buscarCep(Ljava/lang/String;)Lcom/uniamerica/sorveteria/client/viacep/ViaCepResponse;110J
-
-1
-12
-
-
-3
-4 Z
-
-5
-5768jÓ
-
-46
-464710
-
-103
-10310421
-M
-35G
-353628 *
-1 (+28:5B$
-
-
-11
-29
-
-
-13
-37
-
-
-15
-38
-
-25
-251921
-
-71
-717243
-
-81
-818221
-
-32
-323321
-
-89
-899021
-
-91
-919221
-
-24
-241821
-
-77
-777843
-
-49
-495021
-
-95
-959643
-
-39
-394021
-
-56
-565721
-[
-8V
-8910 *
-1 (:5B$
-
-
-11
-12
-
-
-13
-14
-
-
-15
-16R
-
-17
-
-18
-
-19
-M
-41G
-414243 *
-1 (28:5B$
-
-
-11
-12
-
-
-13
-44
-
-
-15
-45
-
-79
-798043
-
-58
-585943
-
-73
-737443
-M
-85G
-858643 *
-1* *('28:5B$
-
-
-11
-12
-
-
-13
-87
-
-
-15
-88
-
-83
-838443
-
-60
-606162
-
-53
-535443
-
-75
-757621
-
-107
-10710821
-M
-26G
-262728 *
-1% (628:5B$
-
-
-11
-29
-
-
-13
-30
-
-
-15
-31
-
-67
-676821
-
-20
-201721
-
-69
-697021
-
-93
-939421
-
-99
-9910043
-
-109
-10911043rÔ
-
-82022*
-1 (
-
-82023*
-1 (
-
-82422*
-1 (	
-
-82423*
-1 (	
-
-82522*
-1 (
-
-82523*
-1 (
-
-263234*
-1 ($
-
-263223*
-1 ($
-
-263223*
-1% (6
-
-353934*
-1 (
-
-353923*
-1 (
-
-353923*
-1 (+
-
-414648*
-1 (
-
-414951*
-1 (,
-
-414623*
-1 (
-
-414934*
-1- (4
-
-414923*
-1 (,
-
-413252*
-1 (,
-
-415355*
-1 (,
-
-412652*
-1 (
-
-413223*
-1 (
-
-412652*
-1 (
-
-415648*
-1- (:
-
-414952*
-1- (:
-
-415855*
-15 (:
-3
-416055*
-1 (.2
-
-
-63
-64
-
-
-65
-66
-
-416723*
-1/ (9
-
-416723*
-1: (B
-
-416952*
-1: (B
-
-414634*
-1 (
-
-414623*
-1	 (
-
-414655*
-1 (&
-
-415648*
-1 (%
-
-414952*
-1 (%
-
-417155*
-1! (%
-
-415648*
-1 ('
-
-414952*
-1 ('
-
-415855*
-1" ('
-
-415648*
-1   ('
-
-414952*
-1   ('
-
-417355*
-1 "  ('
-
-417548*
-1! !('
-
-414952*
-1! !('
-
-417755*
-1!" !('
-
-415648*
-1" "(#
-
-414952*
-1" "(#
-
-417955*
-1"  "(#
-
-414648*
-1' '(&
-
-418152*
-1' '(&
-
-418355*
-1'" '(&
-
-412652*
-1' '(!
-
-413223*
-1' '(!
-
-412652*
-1' '(!
-
-858948*
-1*
- *(
-
-859151*
-1*( *(,
-
-858923*
-1*
- *(
-
-859134*
-1*- *(6
-
-859123*
-1*( *(,
-
-854634*
-1. .(
-
-854623*
-1. .(
-
-854648*
-1. .(H
-
-859352*
-1. .(H
-'
-859555*
-1.= .(H2
-
-
-97
-98
-
-859348*
-1. .(1
-
-858152*
-1. .(1
-
-859955*
-1.) .(1
-
-852652*
-1. .((
-
-853223*
-1. .((
-
-852652*
-1. .((
-5
-856055*
-1/ /("2
-
-63
-101
-
-65
-102
-
-856723*
-1/# /(-
-
-856723*
-1/. /(7
-
-8510352*
-1/. /(7
-5
-856055*
-12 2((2
-
-63
-105
-
-65
-106
-
-856723*
-12) 2(3
-
-856723*
-124 2(?
-
-8510752*
-124 2(?
-
-858934*
-15 5(
-
-858923*
-15 5(
-
-858948*
-15 5(5
-
-853952*
-15 5(5
-
-8510955*
-15, 5(5
-
-853552*
-15 5(+
-
-853923*
-15 5(+
-
-853552*
-15 5(+

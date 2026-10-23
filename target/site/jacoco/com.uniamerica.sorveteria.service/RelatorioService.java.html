@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RelatorioService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sorveteria</a> &gt; <a href="index.source.html" class="el_package">com.uniamerica.sorveteria.service</a> &gt; <span class="el_source">RelatorioService.java</span></div><h1>RelatorioService.java</h1><pre class="source lang-java linenums">
+package com.uniamerica.sorveteria.service;
+
+import com.uniamerica.sorveteria.controller.relatorio.dto.FaturamentoDiarioResponse;
+import com.uniamerica.sorveteria.controller.relatorio.dto.RelatorioAnualResponse;
+import com.uniamerica.sorveteria.controller.relatorio.dto.ResumoVendasResponse;
+import com.uniamerica.sorveteria.entity.StatusVenda;
+import com.uniamerica.sorveteria.repository.VendaRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Service
+@RequiredArgsConstructor
+public class RelatorioService {
+
+  private final VendaRepository vendaRepository;
+
+  public ResumoVendasResponse gerarResumoMensal(int mes, int ano) {
+<span class="fc" id="L22">    LocalDate primeiroDia = LocalDate.of(ano, mes, 1);</span>
+
+<span class="fc" id="L24">    LocalDateTime inicio = primeiroDia.atStartOfDay();</span>
+<span class="fc" id="L25">    LocalDateTime fim = primeiroDia.plusMonths(1).atStartOfDay();</span>
+
+<span class="fc" id="L27">    Double faturamento = vendaRepository.somarVendasPorPeriodo(</span>
+      StatusVenda.CONCLUIDA, inicio, fim
+    );
+
+<span class="fc" id="L31">    Long quantidadeVendas = vendaRepository.contarVendasPorPeriodo(</span>
+      StatusVenda.CONCLUIDA, inicio, fim
+    );
+
+<span class="fc" id="L35">    Long vendasCanceladas = vendaRepository.contarVendasPorPeriodo(</span>
+      StatusVenda.CANCELADA, inicio, fim
+    );
+
+<span class="fc bfc" id="L39" title="All 2 branches covered.">    double ticketMedio = quantidadeVendas == 0</span>
+<span class="fc" id="L40">      ? 0.0</span>
+<span class="fc" id="L41">      : faturamento / quantidadeVendas;</span>
+
+<span class="fc" id="L43">    return new ResumoVendasResponse(</span>
+      faturamento,
+      quantidadeVendas,
+<span class="fc" id="L46">      ticketMedio,</span>
+      vendasCanceladas
+    );
+  }
+
+  public FaturamentoDiarioResponse gerarFaturamentoDiario(LocalDate data) {
+<span class="fc" id="L52">    LocalDateTime inicio = data.atStartOfDay();</span>
+<span class="fc" id="L53">    LocalDateTime fim = data.plusDays(1).atStartOfDay();</span>
+
+<span class="fc" id="L55">    Double faturamento = vendaRepository.somarVendasPorPeriodo(</span>
+      StatusVenda.CONCLUIDA, inicio, fim
+    );
+
+<span class="fc" id="L59">    Long quantidadeVendas = vendaRepository.contarVendasPorPeriodo(</span>
+      StatusVenda.CONCLUIDA, inicio, fim
+    );
+
+<span class="fc" id="L63">    return new FaturamentoDiarioResponse(</span>
+      data,
+      faturamento,
+      quantidadeVendas
+    );
+  }
+
+
+  public RelatorioAnualResponse gerarRelatorioAnual(int ano) {
+<span class="fc" id="L72">    LocalDate primeiroDia = LocalDate.of(ano, 1, 1);</span>
+<span class="fc" id="L73">    LocalDateTime inicioAno = primeiroDia.atStartOfDay();</span>
+<span class="fc" id="L74">    LocalDateTime fimAno = primeiroDia.plusYears(1).atStartOfDay();</span>
+
+<span class="fc" id="L76">    Double faturamentoTotal = vendaRepository.somarVendasPorPeriodo(</span>
+      StatusVenda.CONCLUIDA, inicioAno, fimAno
+    );
+
+<span class="fc" id="L80">    Long quantidadeVendasTotal = vendaRepository.contarVendasPorPeriodo(</span>
+      StatusVenda.CONCLUIDA, inicioAno, fimAno
+    );
+
+<span class="fc" id="L84">    java.util.List&lt;RelatorioAnualResponse.ResumoMensal&gt; meses =</span>
+      new java.util.ArrayList&lt;&gt;();
+
+<span class="fc bfc" id="L87" title="All 2 branches covered.">    for (int mes = 1; mes &lt;= 12; mes++) {</span>
+<span class="fc" id="L88">      LocalDate inicioMes = LocalDate.of(ano, mes, 1);</span>
+
+<span class="fc" id="L90">      LocalDateTime inicio = inicioMes.atStartOfDay();</span>
+<span class="fc" id="L91">      LocalDateTime fim = inicioMes.plusMonths(1).atStartOfDay();</span>
+
+<span class="fc" id="L93">      Double faturamento = vendaRepository.somarVendasPorPeriodo(</span>
+        StatusVenda.CONCLUIDA, inicio, fim
+      );
+
+<span class="fc" id="L97">      Long quantidadeVendas = vendaRepository.contarVendasPorPeriodo(</span>
+        StatusVenda.CONCLUIDA, inicio, fim
+      );
+
+<span class="fc" id="L101">      meses.add(new RelatorioAnualResponse.ResumoMensal(</span>
+        mes,
+        faturamento,
+        quantidadeVendas
+      ));
+    }
+
+<span class="fc" id="L108">    return new RelatorioAnualResponse(</span>
+      ano,
+      faturamentoTotal,
+      quantidadeVendasTotal,
+      meses
+    );
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

@@ -6,3 +6,5 @@ com\uniamerica\sorveteria\service\UsuarioServiceTest.class
 com\uniamerica\sorveteria\ApplicationTests.class
 com\uniamerica\sorveteria\controller\VendaControllerTest.class
 com\uniamerica\sorveteria\service\VendaServiceTest.class
+com\uniamerica\sorveteria\controller\RelatorioControllerTest.class
+com\uniamerica\sorveteria\service\RelatorioServiceTest.class

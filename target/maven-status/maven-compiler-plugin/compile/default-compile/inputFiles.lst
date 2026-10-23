@@ -4,6 +4,10 @@ C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteri
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\controller\produto\dto\ProdutoRequest.java
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\controller\produto\dto\ProdutoResponse.java
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\controller\produto\ProdutoController.java
+C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\controller\relatorio\dto\FaturamentoDiarioResponse.java
+C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\controller\relatorio\dto\RelatorioAnualResponse.java
+C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\controller\relatorio\dto\ResumoVendasResponse.java
+C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\controller\relatorio\RelatorioController.java
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\controller\usuario\dto\UsuarioRequest.java
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\controller\usuario\dto\UsuarioResponse.java
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\controller\usuario\UsuarioController.java
@@ -24,5 +28,6 @@ C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteri
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\repository\UsuarioRepository.java
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\repository\VendaRepository.java
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\service\ProdutoService.java
+C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\service\RelatorioService.java
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\service\UsuarioService.java
 C:\Users\Erik_\IdeaProjects\ApiSorveteria\src\main\java\com\uniamerica\sorveteria\service\VendaService.java

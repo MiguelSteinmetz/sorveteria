@@ -1,213 +1,0 @@
-
-1.0ErikTontini_ApiSorveteriaJavaFrontend"1792763922318*java2.B©	
-L
-Gsrc/main/java/com/uniamerica/sorveteria/repository/VendaRepository.java2
-	
-type3
-	
-MAIN4
-
-package6
-)
-$com.uniamerica.sorveteria.repository7
-9
-4com.uniamerica.sorveteria.repository.VendaRepository9
-
-	interface10
-
-access11
-
-public12
-
-
-full-range13
-
-(10:1)-(15:2)14
-
-simple-name15
-
-VendaRepository16
-:
-4org.springframework.data.repository.NoRepositoryBean17
-,
-&org.springframework.stereotype.Indexed18
-;
-5org.springframework.data.jpa.repository.JpaRepository20
-
-unknown21
-
-
-implements22
-
-
-uses23
-,
-&com.uniamerica.sorveteria.entity.Venda25
-
-java.lang.Long27
-ì
-åcom.uniamerica.sorveteria.repository.VendaRepository#findDistinctByItens_Produto(Lcom/uniamerica/sorveteria/entity/Produto;)Ljava/util/List;29
-
-method30
-
-(12:5)-(12:62)31
-!
-findDistinctByItens_Produto32
-
-java.util.List34
-
-returns35
-.
-(com.uniamerica.sorveteria.entity.Produto37
-
-	has param38
-
-is type39
-à
-Åcom.uniamerica.sorveteria.repository.VendaRepository#findByStatus(Lcom/uniamerica/sorveteria/entity/StatusVenda;)Ljava/util/List;41
-
-(14:5)-(14:50)42
-
-findByStatus43
-2
-,com.uniamerica.sorveteria.entity.StatusVenda45J
-
-1
-12
-
-
-3
-4 Z
-
-5
-5768jÌ
-
-33
-333421
-M
-40G
-404130 *
-1 (28:5B$
-
-
-11
-12
-
-
-13
-42
-
-
-15
-43
-
-24
-242521
-
-36
-363721
-U
-8P
-8910 *
-1
- 
-(!:5B$
-
-
-11
-12
-
-
-13
-14
-
-
-15
-16R
-
-17
-
-18
-
-26
-262721
-M
-28G
-282930 *
-1 (,28:5B$
-
-
-11
-12
-
-
-13
-31
-
-
-15
-32
-
-44
-444521
-
-19
-192021r¨
-
-81922*
-1
-* 
-(D
-
-81923*
-1
-* 
-(7
-
-82423*
-1
-8 
-(=
-
-82623*
-1
-? 
-(C
-
-283335*
-1 (
-
-283638*
-1- (4
-
-283323*
-1 (	
-
-282423*
-1
- (
-
-283639*
-15 (<
-
-283623*
-1- (4
-
-403335*
-1 (
-
-404438*
-1 ()
-
-403323*
-1 (	
-
-402423*
-1
- (
-
-404439*
-1* (0
-
-404423*
-1 ()
