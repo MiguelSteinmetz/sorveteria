@@ -1,0 +1,90 @@
+<div class="container mt-3 mb-5">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h3>Relatórios de vendas</h3>
+            <div class="row g-2 align-items-end">
+                <div class="col-md-3">
+                    <label class="form-label" for="mes">Mês</label>
+                    <select id="mes" class="form-select" [(ngModel)]="mes">
+                        @for (nome of nomesMeses; track nome; let i = $index) {
+                            <option [ngValue]="i + 1">{{ nome }}</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="ano">Ano</label>
+                    <input type="number" id="ano" class="form-control" [(ngModel)]="ano"/>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-primary w-100" (click)="atualizarPeriodo()">Atualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (resumo) {
+        <div class="row g-3 mb-3">
+            <div class="col-md-3">
+                <div class="card centralizar"><div class="card-body">
+                    <p class="text-muted mb-1">Faturamento do mês</p>
+                    <h4>{{ resumo.faturamento | currency:'BRL' }}</h4>
+                </div></div>
+            </div>
+            <div class="col-md-3">
+                <div class="card centralizar"><div class="card-body">
+                    <p class="text-muted mb-1">Vendas concluídas</p>
+                    <h4>{{ resumo.quantidadeVendas }}</h4>
+                </div></div>
+            </div>
+            <div class="col-md-3">
+                <div class="card centralizar"><div class="card-body">
+                    <p class="text-muted mb-1">Ticket médio</p>
+                    <h4>{{ resumo.ticketMedio | currency:'BRL' }}</h4>
+                </div></div>
+            </div>
+            <div class="col-md-3">
+                <div class="card centralizar"><div class="card-body">
+                    <p class="text-muted mb-1">Vendas canceladas</p>
+                    <h4>{{ resumo.vendasCanceladas }}</h4>
+                </div></div>
+            </div>
+        </div>
+    }
+
+    <div class="row g-3">
+        <div class="col-lg-8">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5>Faturamento por mês de {{ anual?.ano ?? ano }}</h5>
+                    @if (anual) {
+                        <p class="text-muted">
+                            Total: {{ anual.faturamentoTotal | currency:'BRL' }} em {{ anual.quantidadeVendasTotal }} vendas
+                        </p>
+                        @for (item of anual.meses; track item.mes) {
+                            <div class="d-flex align-items-center mb-1">
+                                <span class="mes">{{ nomesMeses[item.mes - 1] }}</span>
+                                <div class="trilho flex-grow-1 me-2">
+                                    <div class="barra" [style.width.%]="larguraBarra(item.faturamento)"></div>
+                                </div>
+                                <span class="valor">{{ item.faturamento | currency:'BRL' }}</span>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5>Faturamento do dia</h5>
+                    <input type="date" class="form-control mb-3" [(ngModel)]="data" (change)="buscarDiario()"/>
+                    @if (diario) {
+                        <p class="mb-1">{{ diario.data | date:'dd/MM/yyyy' }}</p>
+                        <h4>{{ diario.faturamento | currency:'BRL' }}</h4>
+                        <p class="text-muted">{{ diario.quantidadeVendas }} vendas</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

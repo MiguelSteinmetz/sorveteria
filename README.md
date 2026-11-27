@@ -1,60 +1,44 @@
-# Aula4Turmab
+# Sorveteria - Front-end
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.27.
+Front-end em Angular 19 da API Sorveteria.
 
-## Development server
+## Funcionalidades
 
-To start a local development server, run:
+- Login com JWT e cadastro de novos usuários
+- Produtos: listagem, cadastro, edição e exclusão (exclusão só para GERENTE)
+- Vendas: nova venda com vários itens, listagem, cancelamento e exclusão
+- Relatórios de vendas (só GERENTE): resumo do mês, faturamento por mês do ano e faturamento do dia
 
-```bash
-ng serve
-```
+## Segurança
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- `src/app/interceptors/auth.interceptor.ts` envia o token em `Authorization: Bearer` em toda chamada à API
+- `src/app/guards/auth.guard.ts` protege as telas restritas (`authGuard`, `gerenteGuard`, `loginGuard`)
+- Resposta 401 faz logout automático; 403 mostra "Acesso negado"
 
-## Code scaffolding
+## Endereço da API
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+O código chama a API por caminhos relativos (`/api/...`), sem `localhost` fixo:
 
-```bash
-ng generate component component-name
-```
+- Em desenvolvimento, o `ng serve` usa o `proxy.conf.json`, que encaminha `/api` para `http://localhost:8080`
+- Em produção, o Nginx serve o build e encaminha `/api` para o Spring Boot
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Se a API ficar em outro domínio, altere `apiUrl` em `src/environments/environment.ts` e libere esse domínio no CORS do back-end (`CORS_ALLOWED_ORIGINS`).
 
-```bash
-ng generate --help
-```
+## Rodando localmente
 
-## Building
-
-To build the project run:
+Com a API rodando na porta 8080:
 
 ```bash
-ng build
+npm ci
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Acesse http://localhost:4200
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Build de produção
 
 ```bash
-ng test
+npm run build
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-# turma-a-front-end
+Os arquivos ficam em `dist/sorveteria_front_end/browser`.

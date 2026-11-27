@@ -1,48 +1,63 @@
-import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { Component, inject, OnInit } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
 import { Produto } from '../../../models/produto';
+import { ProdutoService } from '../../../services/produto.service';
+import { AuthService } from '../../../services/auth.service';
+import { mostrarErro } from '../../../utils/erro';
 
 @Component({
   selector: 'app-produtos-list',
-  imports: [RouterLink],
+  imports: [RouterLink, CurrencyPipe],
   templateUrl: './produtos-list.component.html',
   styleUrl: './produtos-list.component.scss'
 })
-export class ProdutosListComponent {
+export class ProdutosListComponent implements OnInit {
 
-  lista: Produto[] = []
+  lista: Produto[] = [];
+  carregando = true;
 
-  constructor() {
+  produtoService = inject(ProdutoService);
+  authService = inject(AuthService);
 
-    this.lista.push(new Produto(1, 'Casquinha de Baunilha', 'CASQUINHA', 8.5, 50, true));
-    this.lista.push(new Produto(2, 'Açaí 500ml', 'ACAI', 18.9, 30, true));
-    this.lista.push(new Produto(3, 'Milk Shake de Morango', 'MILK_SHAKE', 15.0, 20, true));
+  ngOnInit(): void {
+    this.carregar();
+  }
 
-
-    let produtoNovo = history.state.produtoNovo;
-
-    let produtoEditado = history.state.produtoEditado;
-
-    if(produtoNovo) {
-      produtoNovo.id = 123;
-      this.lista.push(produtoNovo);
-    }
-
-    if(produtoEditado) {
-      console.log(produtoEditado)
-      for(let i = 0; i < this.lista.length; i++) {
-        console.log(produtoEditado.id, this.lista[i].id)
-        if(produtoEditado.id == this.lista[i].id) {
-          console.log("achou")
-          this.lista[i] = produtoEditado
-          break;
-        }
+  carregar() {
+    this.carregando = true;
+    this.produtoService.findAll().subscribe({
+      next: produtos => {
+        this.lista = produtos;
+        this.carregando = false;
+      },
+      error: (erro: HttpErrorResponse) => {
+        this.carregando = false;
+        mostrarErro(erro, 'Erro ao carregar produtos');
       }
-    }
-
+    });
   }
 
   deletar(produto: Produto) {
-
+    Swal.fire({
+      title: `Excluir ${produto.nome}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Excluir',
+      cancelButtonText: 'Cancelar'
+    }).then(resultado => {
+      if (!resultado.isConfirmed) {
+        return;
+      }
+      this.produtoService.delete(produto.id).subscribe({
+        next: () => {
+          Swal.fire({ title: 'Excluído com sucesso!', icon: 'success' });
+          this.carregar();
+        },
+        error: (erro: HttpErrorResponse) => mostrarErro(erro, 'Erro ao excluir produto')
+      });
+    });
   }
 }
