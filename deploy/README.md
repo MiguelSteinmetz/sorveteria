@@ -47,6 +47,18 @@ curl -i http://localhost/api/produtos       # 401 sem token
 sudo bash provision.sh               # re-deploy (idempotente: puxa o código novo e reinicia)
 ```
 
+## Roteiro da apresentação (critério → o que mostrar)
+
+| Critério | Como provar |
+|---|---|
+| Script `.sh` funcional, mínima intervenção | Conta 2: rodar `sudo bash provision.sh` ao vivo; só pede login/senha do gerente |
+| Acessível via IP público | Abrir `http://IP-PUBLICO/` no navegador e fazer login |
+| Back-end em segundo plano (systemd) | `systemctl status sorveteria` (active/running, enabled) |
+| Build de produção do Angular + fallback SPA | Abrir `http://IP-PUBLICO/produtos` direto e dar F5: a página carrega, sem 404 |
+| JWT | `curl -i http://IP-PUBLICO/api/produtos` → 401; logado no front a mesma rota funciona |
+| Security Group seguro, 5432 fechada | Mostrar as regras de entrada (22 só seu IP, 80/443) e `sudo ss -ltnp \| grep 5432` → só 127.0.0.1 |
+| Duas contas | Conta 1 já online com o sistema; conta 2 executando o script |
+
 ## Evitar cobrança
 
 Use instância free tier, **pare/termine** a instância depois da apresentação e não aloque Elastic IP sem associá-lo (IP parado é cobrado).
