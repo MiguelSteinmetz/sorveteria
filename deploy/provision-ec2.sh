@@ -87,6 +87,9 @@ if ! swapon --show | grep -q .; then
   grep -q '^/swapfile' /etc/fstab || echo '/swapfile none swap sw 0 0' >> /etc/fstab
 fi
 
+# Horário do Brasil no servidor (vendas e relatórios por dia/mês dependem disso).
+timedatectl set-timezone America/Sao_Paulo || true
+
 step "Instalando dependências (Nginx, PostgreSQL, Java 17, Maven, Node 20)"
 export DEBIAN_FRONTEND=noninteractive
 apt-get update

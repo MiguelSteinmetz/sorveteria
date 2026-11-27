@@ -9,7 +9,9 @@ User=sorveteria
 Group=sorveteria
 WorkingDirectory=/opt/sorveteria/current
 EnvironmentFile=/etc/sorveteria/sorveteria.env
-ExecStart=/usr/bin/java -XX:MaxRAMPercentage=75 -jar /opt/sorveteria/current/app.jar
+# A EC2 vem em UTC; as vendas e relatórios usam LocalDateTime, então fixa o fuso do Brasil.
+Environment=TZ=America/Sao_Paulo
+ExecStart=/usr/bin/java -XX:MaxRAMPercentage=75 -Duser.timezone=America/Sao_Paulo -jar /opt/sorveteria/current/app.jar
 Restart=on-failure
 RestartSec=5
 SuccessExitStatus=143
