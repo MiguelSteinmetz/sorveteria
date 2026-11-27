@@ -20,6 +20,7 @@
                                     <th scope="col">Data</th>
                                     <th scope="col">Itens</th>
                                     <th scope="col">Total</th>
+                                    <th scope="col">Pagamento</th>
                                     <th scope="col">Status</th>
                                     <th scope="col" class="direita">Ações</th>
                                 </tr>
@@ -31,6 +32,7 @@
                                         <td>{{ venda.dataHora | date:'dd/MM/yyyy HH:mm' }}</td>
                                         <td>{{ resumoItens(venda) }}</td>
                                         <td>{{ venda.valorTotal | currency:'BRL' }}</td>
+                                        <td>{{ nomePagamento(venda) }}</td>
                                         <td>
                                             <span class="badge" [class.badge-success]="venda.status === 'CONCLUIDA'" [class.badge-danger]="venda.status === 'CANCELADA'">
                                                 {{ venda.status }}

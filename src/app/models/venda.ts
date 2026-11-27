@@ -1,5 +1,7 @@
 export type StatusVenda = 'CONCLUIDA' | 'CANCELADA';
 
+export type FormaPagamento = 'DINHEIRO' | 'DEBITO' | 'CREDITO' | 'PIX';
+
 export interface ItemVendaRequest {
   produtoId: number;
   quantidade: number;
@@ -7,6 +9,7 @@ export interface ItemVendaRequest {
 
 export interface VendaRequest {
   itens: ItemVendaRequest[];
+  formaPagamento: FormaPagamento;
 }
 
 export interface ItemVenda {
@@ -23,4 +26,5 @@ export interface Venda {
   valorTotal: number;
   dataHora: string;
   status: StatusVenda;
+  formaPagamento: FormaPagamento;
 }

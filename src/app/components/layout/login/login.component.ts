@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../../services/auth.service';
@@ -9,7 +9,7 @@ import { mensagemDeErro } from '../../../utils/erro';
 
 @Component({
   selector: 'app-login',
-  imports: [MdbFormsModule, FormsModule, RouterLink],
+  imports: [MdbFormsModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

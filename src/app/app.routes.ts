@@ -7,6 +7,7 @@ import { ProdutosDetailsComponent } from './components/produtos/produtos-details
 import { VendasListComponent } from './components/vendas/vendas-list/vendas-list.component';
 import { VendaFormComponent } from './components/vendas/venda-form/venda-form.component';
 import { RelatoriosComponent } from './components/relatorios/relatorios.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { authGuard, gerenteGuard, loginGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
@@ -25,7 +26,8 @@ export const routes: Routes = [
       { path: 'produtos/edit/:id', component: ProdutosDetailsComponent },
       { path: 'vendas', component: VendasListComponent },
       { path: 'vendas/nova', component: VendaFormComponent },
-      { path: 'relatorios', component: RelatoriosComponent, canActivate: [gerenteGuard] }
+      { path: 'relatorios', component: RelatoriosComponent, canActivate: [gerenteGuard] },
+      { path: 'usuarios', component: UsuariosComponent, canActivate: [gerenteGuard] }
     ]
   },
   { path: '**', redirectTo: 'login' }

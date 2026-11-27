@@ -40,6 +40,11 @@ export class VendasListComponent implements OnInit {
     });
   }
 
+  nomePagamento(venda: Venda): string {
+    const nomes: Record<string, string> = { DINHEIRO: 'Dinheiro', DEBITO: 'Débito', CREDITO: 'Crédito', PIX: 'Pix' };
+    return nomes[venda.formaPagamento] ?? '-';
+  }
+
   resumoItens(venda: Venda): string {
     return venda.itens.map(item => `${item.quantidade}x ${item.produtoNome}`).join(', ');
   }

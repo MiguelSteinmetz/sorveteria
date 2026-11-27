@@ -19,7 +19,7 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.url}/login`, dados).pipe(
       tap(resposta => {
         localStorage.setItem(CHAVE_TOKEN, resposta.token);
-        localStorage.setItem(CHAVE_USUARIO, JSON.stringify({ nome: resposta.nome, cargo: resposta.cargo }));
+        localStorage.setItem(CHAVE_USUARIO, JSON.stringify({ nome: resposta.nome, cargo: resposta.cargo, login: dados.login }));
       })
     );
   }
@@ -66,6 +66,11 @@ export class AuthService {
   getNome(): string | null {
     const usuario = localStorage.getItem(CHAVE_USUARIO);
     return usuario ? JSON.parse(usuario).nome : null;
+  }
+
+  getLogin(): string | null {
+    const usuario = localStorage.getItem(CHAVE_USUARIO);
+    return usuario ? JSON.parse(usuario).login ?? null : null;
   }
 
   private estaExpirado(token: string): boolean {

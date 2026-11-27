@@ -28,3 +28,16 @@ export interface UsuarioResponse {
   ativo: boolean;
   cep: string;
 }
+
+export interface UsuarioRequest {
+  nome: string;
+  login: string;
+  senha: string;
+  cargo: Cargo;
+  cep: string;
+}
+
+export interface UsuarioAtualizacaoRequest {
+  nome: string;
+  cargo: Cargo;
+}
