@@ -11,6 +11,7 @@ import com.uniamerica.sorveteria.repository.UsuarioRepository;
 import com.uniamerica.sorveteria.service.AuthService;
 import com.uniamerica.sorveteria.service.ProdutoService;
 import com.uniamerica.sorveteria.service.RelatorioService;
+import com.uniamerica.sorveteria.service.UsuarioService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
@@ -42,6 +43,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -61,7 +63,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 })
 class SecurityConfigTest {
 
-  /** Chave aleatoria gerada a cada execucao: nenhum segredo fixo no codigo. */
   @DynamicPropertySource
   static void chaveJwtAleatoria(DynamicPropertyRegistry registry) {
     registry.add("api.security.jwt.secret", SecurityConfigTest::chaveAleatoria);
@@ -97,6 +98,9 @@ class SecurityConfigTest {
   @MockitoBean
   private RelatorioService relatorioService;
 
+  @MockitoBean
+  private UsuarioService usuarioService;
+
   private Usuario usuario(String login, Cargo cargo, String senhaPura, boolean ativo) {
     Usuario usuario = new Usuario();
     usuario.setId(1L);
@@ -111,8 +115,6 @@ class SecurityConfigTest {
   private String bearer(Cargo cargo) {
     return "Bearer " + tokenService.gerarToken(usuario("teste", cargo, "x", true)).token();
   }
-
-  // ---------- login ----------
 
   @Test
   void loginValidoDeveRetornarTokenComExpiracao() throws Exception {
@@ -163,14 +165,34 @@ class SecurityConfigTest {
   }
 
   @Test
+  void cadastroPublicoDeveCriarFuncionarioSemToken() throws Exception {
+    Usuario criado = usuario("novo", Cargo.FUNCIONARIO, "senha123", true);
+    criado.setCep("85851000");
+    when(usuarioService.cadastrar(any())).thenReturn(criado);
+
+    mockMvc.perform(post("/api/auth/cadastro")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content("{\"nome\":\"Novo\",\"login\":\"novo\",\"senha\":\"senha123\",\"cep\":\"85851000\"}"))
+      .andExpect(status().isCreated())
+      .andExpect(jsonPath("$.login").value("novo"))
+      .andExpect(jsonPath("$.cargo").value("FUNCIONARIO"));
+  }
+
+  @Test
+  void cadastroComDadosInvalidosDeveRetornar400() throws Exception {
+    mockMvc.perform(post("/api/auth/cadastro")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content("{\"nome\":\"\",\"login\":\"a\",\"senha\":\"123\",\"cep\":\"abc\"}"))
+      .andExpect(status().isBadRequest());
+  }
+
+  @Test
   void loginSemCamposDeveRetornar400() throws Exception {
     mockMvc.perform(post("/api/auth/login")
         .contentType(MediaType.APPLICATION_JSON)
         .content("{}"))
       .andExpect(status().isBadRequest());
   }
-
-  // ---------- token ----------
 
   @Test
   void tokenGeradoDeveTerExpiracaoConfiguradaECargo() {
@@ -221,8 +243,6 @@ class SecurityConfigTest {
     mockMvc.perform(get("/api/produtos").header(HttpHeaders.AUTHORIZATION, bearer(Cargo.FUNCIONARIO)))
       .andExpect(status().isOk());
   }
-
-  // ---------- permissao por cargo ----------
 
   @Test
   void funcionarioNaoPodeVerRelatoriosDeveRetornar403() throws Exception {

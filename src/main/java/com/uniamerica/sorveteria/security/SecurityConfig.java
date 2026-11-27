@@ -46,7 +46,7 @@ public class SecurityConfig {
       .formLogin(form -> form.disable())
       .authorizeHttpRequests(auth -> auth
         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-        .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+        .requestMatchers(HttpMethod.POST, "/api/auth/login", "/api/auth/cadastro").permitAll()
         .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
         .requestMatchers("/error").permitAll()
         .requestMatchers("/api/relatorios/**").hasRole("GERENTE")

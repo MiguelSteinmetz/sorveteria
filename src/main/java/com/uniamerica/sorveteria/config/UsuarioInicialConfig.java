@@ -1,8 +1,8 @@
 package com.uniamerica.sorveteria.config;
 
-import com.uniamerica.sorveteria.entity.Cargo;
-import com.uniamerica.sorveteria.entity.Usuario;
-import com.uniamerica.sorveteria.repository.UsuarioRepository;
+import com.uniamerica.sorveteria.entity.*;
+import com.uniamerica.sorveteria.repository.*;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
