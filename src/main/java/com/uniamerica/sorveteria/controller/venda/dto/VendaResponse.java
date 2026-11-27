@@ -1,5 +1,6 @@
 package com.uniamerica.sorveteria.controller.venda.dto;
 
+import com.uniamerica.sorveteria.entity.FormaPagamento;
 import com.uniamerica.sorveteria.entity.StatusVenda;
 import com.uniamerica.sorveteria.entity.Venda;
 
@@ -12,7 +13,8 @@ public record VendaResponse(
         List<ItemVendaResponse> itens,
         Double valorTotal,
         LocalDateTime dataHora,
-        StatusVenda status
+        StatusVenda status,
+        FormaPagamento formaPagamento
 
 ) {
 
@@ -29,7 +31,8 @@ public record VendaResponse(
                 itens,
                 venda.getValorTotal(),
                 venda.getDataHora(),
-                venda.getStatus()
+                venda.getStatus(),
+                venda.getFormaPagamento()
         );
     }
 }

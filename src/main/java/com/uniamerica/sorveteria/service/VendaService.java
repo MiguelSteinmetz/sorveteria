@@ -40,6 +40,7 @@ public class VendaService {
         Venda venda = new Venda();
         venda.setDataHora(LocalDateTime.now());
         venda.setStatus(StatusVenda.CONCLUIDA);
+        venda.setFormaPagamento(vendaRequest.formaPagamento());
 
         double valorTotal = 0.0;
 

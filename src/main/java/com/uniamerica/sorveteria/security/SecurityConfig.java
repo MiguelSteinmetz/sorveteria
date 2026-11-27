@@ -51,6 +51,8 @@ public class SecurityConfig {
         .requestMatchers("/error").permitAll()
         .requestMatchers("/api/relatorios/**").hasRole("GERENTE")
         .requestMatchers(HttpMethod.POST, "/api/usuarios").hasRole("GERENTE")
+        .requestMatchers(HttpMethod.GET, "/api/usuarios").hasRole("GERENTE")
+        .requestMatchers(HttpMethod.PUT, "/api/usuarios/*").hasRole("GERENTE")
         .requestMatchers(HttpMethod.DELETE, "/api/**").hasRole("GERENTE")
         .anyRequest().authenticated())
       .oauth2ResourceServer(oauth2 -> oauth2

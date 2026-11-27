@@ -3,6 +3,7 @@ package com.uniamerica.sorveteria.controller;
 
 import com.uniamerica.sorveteria.controller.venda.VendaController;
 import com.uniamerica.sorveteria.controller.venda.dto.VendaRequest;
+import com.uniamerica.sorveteria.entity.FormaPagamento;
 import com.uniamerica.sorveteria.entity.StatusVenda;
 import com.uniamerica.sorveteria.entity.Venda;
 import com.uniamerica.sorveteria.service.VendaService;
@@ -43,12 +44,14 @@ class VendaControllerTest {
     venda.setItens(new ArrayList<>());
     venda.setValorTotal(30.0);
     venda.setStatus(StatusVenda.CONCLUIDA);
+    venda.setFormaPagamento(FormaPagamento.PIX);
     return venda;
   }
 
   private VendaRequest requestValido() {
     return new VendaRequest(
-      List.of(new com.uniamerica.sorveteria.controller.venda.dto.ItemVendaRequest(1L, 2))
+      List.of(new com.uniamerica.sorveteria.controller.venda.dto.ItemVendaRequest(1L, 2)),
+      FormaPagamento.PIX
     );
   }
 
@@ -63,14 +66,25 @@ class VendaControllerTest {
       .andExpect(status().isCreated())
       .andExpect(jsonPath("$.id").value(1))
       .andExpect(jsonPath("$.valorTotal").value(30.0))
-      .andExpect(jsonPath("$.status").value("CONCLUIDA"));
+      .andExpect(jsonPath("$.status").value("CONCLUIDA"))
+      .andExpect(jsonPath("$.formaPagamento").value("PIX"));
 
     verify(vendaService).registrar(any(VendaRequest.class));
   }
 
   @Test
+  void deveRetornarBadRequestQuandoVendaNaoTiverFormaDePagamento() throws Exception {
+    mockMvc.perform(post("/api/vendas")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content("{\"itens\":[{\"produtoId\":1,\"quantidade\":2}]}"))
+      .andExpect(status().isBadRequest());
+
+    verifyNoInteractions(vendaService);
+  }
+
+  @Test
   void deveRetornarBadRequestQuandoVendaNaoPossuirItens() throws Exception {
-    VendaRequest request = new VendaRequest(List.of());
+    VendaRequest request = new VendaRequest(List.of(), FormaPagamento.DINHEIRO);
 
     mockMvc.perform(post("/api/vendas")
         .contentType(MediaType.APPLICATION_JSON)

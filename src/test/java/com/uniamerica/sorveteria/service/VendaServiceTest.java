@@ -5,6 +5,7 @@ import com.uniamerica.sorveteria.controller.venda.dto.ItemVendaRequest;
 import com.uniamerica.sorveteria.controller.venda.dto.VendaRequest;
 import com.uniamerica.sorveteria.entity.ItemVenda;
 import com.uniamerica.sorveteria.entity.Produto;
+import com.uniamerica.sorveteria.entity.FormaPagamento;
 import com.uniamerica.sorveteria.entity.StatusVenda;
 import com.uniamerica.sorveteria.entity.Venda;
 import com.uniamerica.sorveteria.repository.ProdutoRepository;
@@ -51,7 +52,8 @@ class VendaServiceTest {
 
   private VendaRequest requisicao(Long produtoId, Integer quantidade) {
     return new VendaRequest(
-      List.of(new ItemVendaRequest(produtoId, quantidade))
+      List.of(new ItemVendaRequest(produtoId, quantidade)),
+      FormaPagamento.DINHEIRO
     );
   }
 
@@ -84,6 +86,7 @@ class VendaServiceTest {
     assertNotNull(resultado);
     assertEquals(20.0, resultado.getValorTotal());
     assertEquals(StatusVenda.CONCLUIDA, resultado.getStatus());
+    assertEquals(FormaPagamento.DINHEIRO, resultado.getFormaPagamento());
     assertNotNull(resultado.getDataHora());
     assertEquals(1, resultado.getItens().size());
     assertEquals(18, produto.getEstoque());
@@ -104,7 +107,7 @@ class VendaServiceTest {
     VendaRequest request = new VendaRequest(List.of(
       new ItemVendaRequest(1L, 2),
       new ItemVendaRequest(2L, 3)
-    ));
+    ), FormaPagamento.CREDITO);
 
     when(produtoRepository.findById(1L))
       .thenReturn(Optional.of(produto));

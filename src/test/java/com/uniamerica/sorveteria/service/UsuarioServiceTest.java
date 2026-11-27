@@ -2,6 +2,7 @@ package com.uniamerica.sorveteria.service;
 
 import com.uniamerica.sorveteria.client.viacep.ViaCepClient;
 import com.uniamerica.sorveteria.client.viacep.ViaCepResponse;
+import com.uniamerica.sorveteria.controller.usuario.dto.UsuarioAtualizacaoRequest;
 import com.uniamerica.sorveteria.controller.usuario.dto.UsuarioRequest;
 import com.uniamerica.sorveteria.entity.Usuario;
 import com.uniamerica.sorveteria.repository.UsuarioRepository;
@@ -158,5 +159,102 @@ class UsuarioServiceTest {
 
         assertEquals(HttpStatus.BAD_REQUEST, erro.getStatusCode());
         verify(viaCepClient, never()).buscarCep(anyString());
+    }
+
+    private Usuario criarUsuario(Long id, String login, Cargo cargo) {
+        Usuario usuario = new Usuario();
+        usuario.setId(id);
+        usuario.setNome("Nome " + login);
+        usuario.setLogin(login);
+        usuario.setCargo(cargo);
+        return usuario;
+    }
+
+    @Test
+    @DisplayName("Deve atualizar nome e cargo do funcionário")
+    void deveAtualizarUsuario() {
+        Usuario usuario = criarUsuario(2L, "joao", Cargo.FUNCIONARIO);
+        when(usuarioRepository.findById(2L)).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.save(any(Usuario.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        Usuario resultado = usuarioService.atualizar(2L, new UsuarioAtualizacaoRequest("João Souza", Cargo.GERENTE), "erik");
+
+        assertEquals("João Souza", resultado.getNome());
+        assertEquals(Cargo.GERENTE, resultado.getCargo());
+    }
+
+    @Test
+    @DisplayName("Não deve deixar o usuário mudar o próprio cargo")
+    void naoDeveMudarProprioCargo() {
+        Usuario usuario = criarUsuario(1L, "erik", Cargo.GERENTE);
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
+
+        ResponseStatusException erro = assertThrows(ResponseStatusException.class,
+                () -> usuarioService.atualizar(1L, new UsuarioAtualizacaoRequest("Erik", Cargo.FUNCIONARIO), "erik"));
+
+        assertEquals(HttpStatus.BAD_REQUEST, erro.getStatusCode());
+        verify(usuarioRepository, never()).save(any(Usuario.class));
+    }
+
+    @Test
+    @DisplayName("Não deve rebaixar o último gerente")
+    void naoDeveRebaixarUltimoGerente() {
+        Usuario usuario = criarUsuario(1L, "ana", Cargo.GERENTE);
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.countByCargo(Cargo.GERENTE)).thenReturn(1L);
+
+        ResponseStatusException erro = assertThrows(ResponseStatusException.class,
+                () -> usuarioService.atualizar(1L, new UsuarioAtualizacaoRequest("Ana", Cargo.FUNCIONARIO), "erik"));
+
+        assertEquals(HttpStatus.CONFLICT, erro.getStatusCode());
+    }
+
+    @Test
+    @DisplayName("Deve lançar NOT_FOUND ao atualizar usuário inexistente")
+    void atualizarUsuarioInexistente() {
+        when(usuarioRepository.findById(99L)).thenReturn(Optional.empty());
+
+        ResponseStatusException erro = assertThrows(ResponseStatusException.class,
+                () -> usuarioService.atualizar(99L, new UsuarioAtualizacaoRequest("X", Cargo.FUNCIONARIO), "erik"));
+
+        assertEquals(HttpStatus.NOT_FOUND, erro.getStatusCode());
+    }
+
+    @Test
+    @DisplayName("Deve excluir funcionário")
+    void deveExcluirUsuario() {
+        Usuario usuario = criarUsuario(2L, "joao", Cargo.FUNCIONARIO);
+        when(usuarioRepository.findById(2L)).thenReturn(Optional.of(usuario));
+
+        usuarioService.deletar(2L, "erik");
+
+        verify(usuarioRepository).delete(usuario);
+    }
+
+    @Test
+    @DisplayName("Não deve excluir o próprio usuário")
+    void naoDeveExcluirProprioUsuario() {
+        Usuario usuario = criarUsuario(1L, "erik", Cargo.GERENTE);
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
+
+        ResponseStatusException erro = assertThrows(ResponseStatusException.class,
+                () -> usuarioService.deletar(1L, "erik"));
+
+        assertEquals(HttpStatus.BAD_REQUEST, erro.getStatusCode());
+        verify(usuarioRepository, never()).delete(any(Usuario.class));
+    }
+
+    @Test
+    @DisplayName("Não deve excluir o último gerente")
+    void naoDeveExcluirUltimoGerente() {
+        Usuario usuario = criarUsuario(3L, "ana", Cargo.GERENTE);
+        when(usuarioRepository.findById(3L)).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.countByCargo(Cargo.GERENTE)).thenReturn(1L);
+
+        ResponseStatusException erro = assertThrows(ResponseStatusException.class,
+                () -> usuarioService.deletar(3L, "erik"));
+
+        assertEquals(HttpStatus.CONFLICT, erro.getStatusCode());
+        verify(usuarioRepository, never()).delete(any(Usuario.class));
     }
 }

@@ -3,6 +3,7 @@ package com.uniamerica.sorveteria.controller;
 
 import com.uniamerica.sorveteria.client.viacep.ViaCepResponse;
 import com.uniamerica.sorveteria.controller.usuario.UsuarioController;
+import com.uniamerica.sorveteria.controller.usuario.dto.UsuarioAtualizacaoRequest;
 import com.uniamerica.sorveteria.controller.usuario.dto.UsuarioRequest;
 import com.uniamerica.sorveteria.entity.Cargo;
 import com.uniamerica.sorveteria.entity.Usuario;
@@ -16,10 +17,16 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import tools.jackson.databind.ObjectMapper;
 
+import java.util.List;
+
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -102,5 +109,56 @@ class UsuarioControllerTest {
       .andExpect(jsonPath("$.cep").value("85851000"))
       .andExpect(jsonPath("$.logradouro").value("Rua das Flores"))
       .andExpect(jsonPath("$.uf").value("PR"));
+  }
+
+  @Test
+  void deveListarUsuarios() throws Exception {
+    Usuario usuario = new Usuario();
+    usuario.setId(1L);
+    usuario.setNome("João da Silva");
+    usuario.setLogin("joao");
+    usuario.setCargo(Cargo.FUNCIONARIO);
+
+    when(usuarioService.listar()).thenReturn(List.of(usuario));
+
+    mockMvc.perform(get("/api/usuarios"))
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$[0].login").value("joao"));
+  }
+
+  @Test
+  void deveAtualizarUsuario() throws Exception {
+    Usuario usuario = new Usuario();
+    usuario.setId(2L);
+    usuario.setNome("João Souza");
+    usuario.setLogin("joao");
+    usuario.setCargo(Cargo.GERENTE);
+
+    when(usuarioService.atualizar(eq(2L), any(UsuarioAtualizacaoRequest.class), eq("erik"))).thenReturn(usuario);
+
+    mockMvc.perform(put("/api/usuarios/2")
+        .principal(() -> "erik")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(objectMapper.writeValueAsString(new UsuarioAtualizacaoRequest("João Souza", Cargo.GERENTE))))
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.nome").value("João Souza"))
+      .andExpect(jsonPath("$.cargo").value("GERENTE"));
+  }
+
+  @Test
+  void deveRetornar400AoAtualizarSemNome() throws Exception {
+    mockMvc.perform(put("/api/usuarios/2")
+        .principal(() -> "erik")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(objectMapper.writeValueAsString(new UsuarioAtualizacaoRequest("", null))))
+      .andExpect(status().isBadRequest());
+  }
+
+  @Test
+  void deveExcluirUsuario() throws Exception {
+    mockMvc.perform(delete("/api/usuarios/2").principal(() -> "erik"))
+      .andExpect(status().isNoContent());
+
+    verify(usuarioService).deletar(2L, "erik");
   }
 }

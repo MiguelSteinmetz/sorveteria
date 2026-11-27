@@ -1,5 +1,6 @@
 package com.uniamerica.sorveteria.repository;
 
+import com.uniamerica.sorveteria.entity.Cargo;
 import com.uniamerica.sorveteria.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,4 +10,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     Optional<Usuario> findByLogin(String login);
     boolean existsByLogin(String login);
+    long countByCargo(Cargo cargo);
 }

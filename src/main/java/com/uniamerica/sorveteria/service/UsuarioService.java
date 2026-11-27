@@ -2,15 +2,21 @@ package com.uniamerica.sorveteria.service;
 
 import com.uniamerica.sorveteria.client.viacep.ViaCepClient;
 import com.uniamerica.sorveteria.client.viacep.ViaCepResponse;
+import com.uniamerica.sorveteria.controller.usuario.dto.UsuarioAtualizacaoRequest;
 import com.uniamerica.sorveteria.controller.usuario.dto.UsuarioRequest;
+import com.uniamerica.sorveteria.entity.Cargo;
 import com.uniamerica.sorveteria.entity.Usuario;
 import com.uniamerica.sorveteria.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -57,5 +63,51 @@ public class UsuarioService {
     log.info("Endereço encontrado para o usuário {}", usuarioId);
 
     return endereco;
+  }
+
+  public List<Usuario> listar() {
+    return usuarioRepository.findAll(Sort.by("nome"));
+  }
+
+  @Transactional
+  public Usuario atualizar(Long id, UsuarioAtualizacaoRequest request, String loginLogado) {
+    Usuario usuario = buscarPorId(id);
+
+    if (usuario.getCargo() != request.cargo()) {
+      if (usuario.getLogin().equals(loginLogado)) {
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você não pode alterar o seu próprio cargo");
+      }
+      if (usuario.getCargo() == Cargo.GERENTE && usuarioRepository.countByCargo(Cargo.GERENTE) <= 1) {
+        throw new ResponseStatusException(HttpStatus.CONFLICT, "Precisa existir pelo menos um gerente");
+      }
+    }
+
+    usuario.setNome(request.nome());
+    usuario.setCargo(request.cargo());
+
+    log.info("Usuario {} atualizado", id);
+
+    return usuarioRepository.save(usuario);
+  }
+
+  @Transactional
+  public void deletar(Long id, String loginLogado) {
+    Usuario usuario = buscarPorId(id);
+
+    if (usuario.getLogin().equals(loginLogado)) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você não pode excluir o seu próprio usuário");
+    }
+    if (usuario.getCargo() == Cargo.GERENTE && usuarioRepository.countByCargo(Cargo.GERENTE) <= 1) {
+      throw new ResponseStatusException(HttpStatus.CONFLICT, "Precisa existir pelo menos um gerente");
+    }
+
+    usuarioRepository.delete(usuario);
+
+    log.info("Usuario {} excluído", id);
+  }
+
+  private Usuario buscarPorId(Long id) {
+    return usuarioRepository.findById(id).orElseThrow(() ->
+      new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não encontrado com id " + id));
   }
 }

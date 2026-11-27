@@ -29,4 +29,8 @@ public class Venda {
 
     @Enumerated(EnumType.STRING)
     private StatusVenda status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "forma_pagamento")
+    private FormaPagamento formaPagamento;
 }
