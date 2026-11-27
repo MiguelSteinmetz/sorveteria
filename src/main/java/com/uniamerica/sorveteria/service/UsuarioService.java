@@ -8,6 +8,7 @@ import com.uniamerica.sorveteria.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 @Slf4j
@@ -17,6 +18,7 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
    private final ViaCepClient viaCepClient;
+    private final PasswordEncoder passwordEncoder;
 
     public Usuario cadastrar(UsuarioRequest request) {
       log.info("Inciando Cadastro de usuario");
@@ -29,7 +31,7 @@ public class UsuarioService {
         Usuario usuario = new Usuario();
         usuario.setNome(request.nome());
         usuario.setLogin(request.login());
-        usuario.setSenha(request.senha());
+        usuario.setSenha(passwordEncoder.encode(request.senha()));
         usuario.setCargo(request.cargo());
         usuario.setCep(request.cep());
         usuario.setAtivo(true);

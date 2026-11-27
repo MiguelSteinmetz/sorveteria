@@ -9,6 +9,7 @@ import com.uniamerica.sorveteria.entity.Produto;
 import com.uniamerica.sorveteria.service.ProdutoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -22,7 +23,9 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+// Testa so o controller; as regras de seguranca sao testadas em SecurityConfigTest.
 @WebMvcTest(ProdutoController.class)
+@AutoConfigureMockMvc(addFilters = false)
 class ProdutoControllerTest {
 
   @Autowired

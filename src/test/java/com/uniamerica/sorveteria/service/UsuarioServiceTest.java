@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
@@ -36,6 +37,9 @@ class UsuarioServiceTest {
 
     @Mock
     private ViaCepClient viaCepClient;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private UsuarioService usuarioService;
@@ -70,6 +74,8 @@ class UsuarioServiceTest {
         when(usuarioRepository.save(any(Usuario.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
 
+        when(passwordEncoder.encode("123456")).thenReturn("hash-bcrypt");
+
         Usuario resultado = usuarioService.cadastrar(request);
 
         assertNotNull(resultado);
@@ -77,6 +83,7 @@ class UsuarioServiceTest {
         assertEquals(Cargo.FUNCIONARIO, resultado.getCargo());
         assertEquals(true, resultado.getAtivo());
         assertEquals("85851000", resultado.getCep());
+        assertEquals("hash-bcrypt", resultado.getSenha());
         verify(usuarioRepository).save(any(Usuario.class));
     }
 

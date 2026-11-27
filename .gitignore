@@ -40,3 +40,16 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Java / Maven
+/target/
+*.class
+*.log
+
+# Segredos: nunca commitar (use .env.example como modelo)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+application-local.properties

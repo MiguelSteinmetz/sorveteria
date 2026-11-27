@@ -1,6 +1,0 @@
-projectKey=apisorveteria
-serverUrl=http://localhost:9000
-serverVersion=26.10.0.133078
-dashboardUrl=http://localhost:9000/dashboard?id=apisorveteria
-ceTaskId=df0e0899-1ec7-4d32-b463-bbf7c20441fa
-ceTaskUrl=http://localhost:9000/api/ce/task?id=df0e0899-1ec7-4d32-b463-bbf7c20441fa
