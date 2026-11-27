@@ -1,0 +1,42 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ editando ? 'Editar produto' : 'Cadastrar novo produto' }}</h3>
+                    <br>
+
+                    <mdb-form-control>
+                        <input mdbInput type="text" id="nome" class="form-control mb-3" [(ngModel)]="produto.nome"/>
+                        <label mdbLabel class="form-label" for="nome">Nome</label>
+                    </mdb-form-control>
+
+                    <label class="form-label" for="categoria">Categoria</label>
+                    <select id="categoria" class="form-select mb-3" [(ngModel)]="produto.categoria">
+                        @for (categoria of categorias; track categoria) {
+                            <option [value]="categoria">{{ categoria }}</option>
+                        }
+                    </select>
+
+                    <mdb-form-control>
+                        <input mdbInput type="number" id="preco" min="0" step="0.01" class="form-control mb-3" [(ngModel)]="produto.preco"/>
+                        <label mdbLabel class="form-label" for="preco">Preço</label>
+                    </mdb-form-control>
+
+                    <mdb-form-control>
+                        <input mdbInput type="number" id="estoque" min="0" class="form-control mb-3" [(ngModel)]="produto.estoque"/>
+                        <label mdbLabel class="form-label" for="estoque">Estoque</label>
+                    </mdb-form-control>
+
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="disponivel" [(ngModel)]="produto.disponivel"/>
+                        <label class="form-check-label" for="disponivel">Disponível</label>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary me-2" routerLink="/admin/produtos">Voltar</button>
+                    <button type="button" class="btn btn-primary" (click)="salvar()" [disabled]="salvando">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

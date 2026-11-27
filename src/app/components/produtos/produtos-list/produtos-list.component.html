@@ -1,0 +1,56 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Listagem de produtos</h3>
+                    <div class="direita">
+                        <button type="button" class="btn btn-primary" routerLink="/admin/produtos/new">Novo</button>
+                    </div>
+                    <br>
+                    @if (carregando) {
+                        <p class="centralizar">Carregando...</p>
+                    } @else if (lista.length === 0) {
+                        <p class="centralizar">Nenhum produto cadastrado.</p>
+                    } @else {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Preço</th>
+                                    <th scope="col">Estoque</th>
+                                    <th scope="col">Disponível</th>
+                                    <th scope="col" class="direita">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (produto of lista; track produto.id) {
+                                    <tr>
+                                        <td>{{ produto.id }}</td>
+                                        <td>{{ produto.nome }}</td>
+                                        <td>{{ produto.categoria }}</td>
+                                        <td>{{ produto.preco | currency:'BRL' }}</td>
+                                        <td>{{ produto.estoque }}</td>
+                                        <td>
+                                            <span class="badge" [class.badge-success]="produto.disponivel" [class.badge-secondary]="!produto.disponivel">
+                                                {{ produto.disponivel ? 'Sim' : 'Não' }}
+                                            </span>
+                                        </td>
+                                        <td class="direita">
+                                            <button type="button" class="btn btn-warning btn-sm me-1" [routerLink]="['/admin/produtos/edit', produto.id]">Editar</button>
+                                            @if (authService.ehGerente()) {
+                                                <button type="button" class="btn btn-danger btn-sm" (click)="deletar(produto)">Excluir</button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

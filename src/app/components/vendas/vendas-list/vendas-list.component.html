@@ -1,0 +1,58 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Vendas</h3>
+                    <div class="direita">
+                        <button type="button" class="btn btn-primary" routerLink="/admin/vendas/nova">Nova venda</button>
+                    </div>
+                    <br>
+                    @if (carregando) {
+                        <p class="centralizar">Carregando...</p>
+                    } @else if (lista.length === 0) {
+                        <p class="centralizar">Nenhuma venda registrada.</p>
+                    } @else {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Itens</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Pagamento</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col" class="direita">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (venda of lista; track venda.id) {
+                                    <tr>
+                                        <td>{{ venda.id }}</td>
+                                        <td>{{ venda.dataHora | date:'dd/MM/yyyy HH:mm' }}</td>
+                                        <td>{{ resumoItens(venda) }}</td>
+                                        <td>{{ venda.valorTotal | currency:'BRL' }}</td>
+                                        <td>{{ nomePagamento(venda) }}</td>
+                                        <td>
+                                            <span class="badge" [class.badge-success]="venda.status === 'CONCLUIDA'" [class.badge-danger]="venda.status === 'CANCELADA'">
+                                                {{ venda.status }}
+                                            </span>
+                                        </td>
+                                        <td class="direita">
+                                            @if (venda.status === 'CONCLUIDA') {
+                                                <button type="button" class="btn btn-warning btn-sm me-1" (click)="cancelar(venda)">Cancelar</button>
+                                            }
+                                            @if (authService.ehGerente()) {
+                                                <button type="button" class="btn btn-danger btn-sm" (click)="deletar(venda)">Excluir</button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
