@@ -53,3 +53,41 @@ mvn test
 ```
 
 `ApplicationTests` sobe o contexto completo e precisa do PostgreSQL e das variáveis `DB_PASSWORD` e `JWT_SECRET`.
+
+## Front-end (Angular)
+
+```
+npm install
+npm start
+```
+
+Abre em http://localhost:4200 e usa o `proxy.conf.json` para chamar a API em localhost:8080.
+
+## Deploy na AWS (EC2)
+
+O deploy é feito pelo script `deploy/provision-ec2.sh` numa EC2 Ubuntu 24.04 (t2.micro ou t3.micro).
+Ele instala Nginx, PostgreSQL, Java 17, Maven e Node 20, cria o banco, gera senha do banco e `JWT_SECRET`
+aleatórios em `/etc/sorveteria/sorveteria.env` (fora do Git), faz o build do back e do front e sobe tudo.
+
+1. Security Group: liberar só 22 (SSH, seu IP), 80 e 443. A porta 5432 fica fechada.
+2. Conectar na instância e rodar:
+
+```
+curl -fsSL https://raw.githubusercontent.com/MiguelSteinmetz/sorveteria/master/deploy/provision-ec2.sh -o provision.sh
+sudo bash provision.sh
+```
+
+O script pergunta o login e a senha do primeiro GERENTE. No final mostra o IP público para acessar.
+
+- Spring Boot roda em segundo plano pelo systemd (`deploy/sorveteria.service`), só em localhost:8080.
+- Nginx serve o build do Angular e faz proxy de `/api` (`deploy/nginx-sorveteria.conf`), com fallback das rotas para o `index.html`.
+- PostgreSQL só escuta em localhost.
+
+Logs e status:
+
+```
+systemctl status sorveteria
+journalctl -u sorveteria -f
+```
+
+Mais detalhes em `deploy/README.md`.
