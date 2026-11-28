@@ -117,8 +117,8 @@ set +a
 DB_NAME=${DB_URL##*/}; DB_NAME=${DB_NAME%%\?*}
 DB_USER=${DB_USERNAME}
 [[ $DB_NAME =~ ^[a-zA-Z_][a-zA-Z0-9_]*$ && $DB_USER =~ ^[a-zA-Z_][a-zA-Z0-9_]*$ ]] || fail "DB_URL/DB_USERNAME inválidos no $ENV_FILE"
-export DB_PASSWORD_HEX="$(printf '%s' "$DB_PASSWORD" | od -An -tx1 | tr -d ' \n')"
-sudo -u postgres psql -v ON_ERROR_STOP=1 -v db_name="$DB_NAME" -v db_user="$DB_USER" <<'SQL'
+DB_PASSWORD_HEX="$(printf '%s' "$DB_PASSWORD" | od -An -tx1 | tr -d ' \n')"
+sudo -u postgres psql -v ON_ERROR_STOP=1 -v db_name="$DB_NAME" -v db_user="$DB_USER" -v db_password_hex="$DB_PASSWORD_HEX" <<'SQL'
 SELECT format('CREATE ROLE %I LOGIN', :'db_user')
 WHERE NOT EXISTS (SELECT FROM pg_roles WHERE rolname = :'db_user')\gexec
 SELECT format('ALTER ROLE %I WITH LOGIN PASSWORD %L', :'db_user', convert_from(decode(:'db_password_hex', 'hex'), 'UTF8'))\gexec
