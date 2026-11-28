@@ -102,7 +102,8 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/nodesou
 apt-get update
 apt-get install -y nodejs
 
-install -d -o "$APP_USER" -g "$APP_USER" -m 0750 "$APP_HOME" "$RELEASES" "$APP_HOME/frontend"
+# 0755 nas pastas para o Nginx (www-data) conseguir ler o build do Angular.
+install -d -o "$APP_USER" -g "$APP_USER" -m 0755 "$APP_HOME" "$RELEASES" "$APP_HOME/frontend"
 install -d -o root -g root -m 0755 /etc/systemd/system /etc/nginx/sites-available /etc/nginx/sites-enabled
 
 step "Configurando PostgreSQL (somente localhost)"
@@ -142,10 +143,11 @@ FRONTEND_INDEX=$(find "$REPO_ROOT/dist" -type f -path '*/browser/index.html' -pr
 [[ -n $FRONTEND_INDEX ]] || fail "build Angular não gerou index.html em dist/"
 FRONTEND_DIR=$(dirname "$FRONTEND_INDEX")
 RELEASE="$RELEASES/$(date -u +%Y%m%d%H%M%S)"
-install -d -o "$APP_USER" -g "$APP_USER" -m 0750 "$RELEASE" "$RELEASE/frontend"
+install -d -o "$APP_USER" -g "$APP_USER" -m 0755 "$RELEASE" "$RELEASE/frontend"
 install -o "$APP_USER" -g "$APP_USER" -m 0640 "$JAR" "$RELEASE/app.jar"
 cp -a "$FRONTEND_DIR/." "$RELEASE/frontend/"
 chown -R "$APP_USER:$APP_USER" "$RELEASE"
+chmod -R a+rX "$RELEASE/frontend"
 ln -sfn "$RELEASE" "$CURRENT.new"
 mv -Tf "$CURRENT.new" "$CURRENT"
 
